@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : colores
+    Created on : 09-oct-2013, 12:20:48
+    Author     : hugo
+-->
+<jsp:root version="2.0"
+        xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+    
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+        
+        <head>
+            
+            <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0" />    
+            <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>   
+            <jsp:directive.include file="../../WEB-INF/jspf/SeguridadSession.jspx"/>
+            
+            
+            <style type="text/css" >            
+                    @import "../../css/Basic.css" ;
+                    @import "../../css/Esquema.css" ;
+                    @import "../../css/Media.css" ;
+                    @import "../../css/themes/DeepOrange400.css";
+            </style>
+
+
+            <script type="text/javascript">                   
+                
+               
+                <jsp:include page="../../js/ajax/libreria.js" />
+                <jsp:include page="../../js/utilidad/funciones.js"/>
+                <jsp:include page="../../js/componente/Session/Cliente/Lista.js"/>
+                <jsp:include page="../../js/componente/Session/Cliente/basictable.js"/>
+                    
+                
+            </script>       
+
+        </head>
+        
+        <body>
+            
+            
+            <header>
+                <div></div>
+            </header>
+
+            <nav id = "nav">
+                <span></span>
+            </nav>
+
+            <main id="wrapper">
+                
+                <aside>
+                    <div></div>
+                </aside>
+
+                <section>
+                                                       
+                    <article>
+                        <h4>Clientes</h4>  
+                    </article>
+                    
+                    <article>
+                        <div class = "busqueda"> 
+                                <label for="buscar">Buscar:</label>
+                                <input type="search" 
+                                name="buscar" 
+                                id="buscar"  
+                                placeholder="escribir y presionar Enter"
+                                />
+                        </div>                       
+                    </article>    
+
+                    
+                    <article>
+                        <div id="tab_body">                            
+                        </div>
+                    </article>                      
+                    
+                    <article>
+                        <div id="div_paginacion">                            
+                        </div>
+                    </article>                    
+                    
+                    
+                    
+                    
+                   <article class = "botones-footer">
+ 
+                        <div class ="commandbutton">
+                            <a 
+                                href="javascript:void(0);" 
+                                class="botonEnlace"
+                                id="clil_agregar"
+                                >
+                                Nuevo</a>
+                        </div>                             
+
+                   </article>                       
+                    
+                        
+                </section>
+            </main>
+
+            <footer>
+                <h6>
+                                    
+                </h6>
+            </footer>
+                
+        </body>
+                
+    </html>                
+                       
+</jsp:root>

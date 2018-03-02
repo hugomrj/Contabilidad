@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<root>
+    
+    <table 
+        name="administracion.modulos">            
+            
+            <id name="modulo"/>            
+            <column name="descripcion"/>
+            
+    </table>
+    
+</root>
+

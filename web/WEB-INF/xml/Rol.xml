@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<root>
+    
+    <table 
+        name="administracion.roles">      
+        
+            <id name="rol"/>            
+            <column name="nombre_rol" property="nombre"/>
+                        
+    </table>
+    
+</root>
+

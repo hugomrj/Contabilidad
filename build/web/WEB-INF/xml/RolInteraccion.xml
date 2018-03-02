@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<root>
+    
+    <table 
+        name="administracion.roles_x_interacciones">           
+            
+            <id name="id"/>                        
+            
+            <column name="rol" foreign = "Rol"/> 
+            <column name="interaccion" foreign = "Interaccion"/> 
+            
+    </table>
+    
+</root>
+

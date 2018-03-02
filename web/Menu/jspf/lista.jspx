@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jsp:root version="2.0"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    
+        <div class="ListaA">
+        
+            <ul id="listaProcesos" >                            
+                    <c:forEach items="${lista}" var ="interacciones" >  
+                        <componente  id="${interacciones.interaccion}">                                        
+                            <li>
+                                <c:url value="${request.getContextPath()}${interacciones.url}" var="comUrl"/>  
+                                <a href="${comUrl}">                                        
+                                    <h4>
+                                        <nombre>${interacciones.nombre_interaccion}</nombre>                                                  
+                                    </h4>                                            
+                                </a>
+                            </li>
+                        </componente>                                          
+                    </c:forEach> 
+                </ul>    
+
+            </div>
+
+</jsp:root>

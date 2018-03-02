@@ -1,0 +1,56 @@
+
+
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+       
+    
+     <article> 
+    
+
+        <form
+                action="#" 
+                method="post" 
+                id="subria_form" 
+                name='subria_form'
+            >
+                        
+            <jsp:include page="basicformRol.jspx" flush="true"/>
+
+            
+        </form>  
+    
+    </article>      
+    
+
+    <article class = "botones-footer">
+
+        <div id="busqueda_footer">
+
+            <div class ="commandbutton">
+                <a href="javascript:void(0);" 
+                   id ="subria_guardar"
+                   class="botonEnlace" >Guardar</a>
+            </div>                                
+
+            <div class ="commandbutton">
+                <a href="javascript:void(0);" 
+                   id ="subria_cerrar"
+                   class="botonEnlace" >Cerrar</a>
+            </div>                                
+
+        </div> 
+
+    </article>        
+
+    
+    
+    
+    
+</jsp:root>
+                
+
+

@@ -1,0 +1,67 @@
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+        
+        <c:set var = "totalRegistros" scope ="page" value = "${totalRegistros}"/>
+    
+        
+        <table class="tableA"
+               id="rolinteraccion_interaccion_tabla"
+               data-totalregistros="${totalRegistros}"
+               >
+            
+            
+                <thead>
+                    <tr>
+                        <th class="c5">codigo</th>                        
+                        <th class="c20">descripcion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    
+                    <c:forEach items="${lista}" var ="lista" >
+
+                        <tr 
+                            data-linea_id ="${lista.id}"
+                            >     
+                                                       
+                            <td class="c5n"> ${lista.interaccion}</td>                            
+                            <td class="c20t"> ${lista.nombre_interaccion} </td>         
+
+                            
+                        </tr>  
+                    </c:forEach>
+                        
+                        
+                </tbody>
+                
+        </table>
+
+
+            <div class = "botones-footer">
+                 <div class ="commandbutton">
+                     <a 
+                         href="javascript:void(0);" 
+                         class="botonEnlace2"
+                         id="riir_agregar_roles"
+                         >
+                         agregar</a>
+                 </div>   
+            </div>                   
+               
+               
+               
+    
+</jsp:root>
+                
+
+
+
+
+
+
+
+

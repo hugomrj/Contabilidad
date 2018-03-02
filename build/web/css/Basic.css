@@ -1,0 +1,48 @@
+
+
+   @font-face {
+      font-family: "Source_Sans_Pro";      
+      src: url(fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf);
+    }
+
+   
+
+*{       
+    font-family: "Calibri";
+    font-size: 99.5%;
+  
+    font-size: 0.95rem;  
+    font-family: "Source_Sans_Pro";
+      
+    font-size: 0.97rem;  
+    
+    margin:0px;
+}
+    
+    
+body {    
+        background:white;        
+        display:block;
+        
+        height: 100%;
+        margin:0rem;
+}
+
+section, aside, article, .SinEnfoque{
+    background:white;    
+}
+
+article {
+    margin-left: 0.5em;     
+    margin-bottom: 0.5em; 
+    margin-top: 0.5em; 
+}
+
+
+
+/* color de campos de tablas antes que el hover */
+.tableA tbody tr:nth-child(even), 
+.tableB tbody tr:nth-child(even)  
+{
+    background:white;
+}

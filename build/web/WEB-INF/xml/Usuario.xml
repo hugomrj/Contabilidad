@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<root>
+    
+    <table 
+        name="administracion.usuarios">      
+        
+            <id name="usuario"/>            
+            <column name="cuenta"/>
+            <column name="clave"   selectnot="selectnot" />  
+                        
+    </table>
+    
+</root>
+

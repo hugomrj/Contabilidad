@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<root>
+    
+    <table 
+        name="administracion.recursos"> 
+            <id name="recurso"/>            
+            <column name="url"/> 
+    </table>
+    
+</root>

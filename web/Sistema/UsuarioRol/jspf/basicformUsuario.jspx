@@ -1,0 +1,69 @@
+
+
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    
+
+                <div class="tabular">  
+
+
+                    <div class="fila">
+                        <div class="col"  style="width: 100%;" >
+                            <div class="campo">
+
+                                <input 
+                                    TYPE="hidden"
+                                    name="id"                                                
+                                    id="suburu_id"
+                                    value="0"
+                                 />
+
+                                <input 
+                                    TYPE="hidden"
+                                    name="rol"                                                
+                                    id="suburu_rol"
+                                    value="0"
+                                 />
+
+                                
+                                    <label for="rol"  style="width: 10%;"  >Usuario:</label> 
+
+                                    <input TYPE="TEXT" 
+                                           id ="suburu_usuario"
+                                           name="usuario" 
+                                           size ="10"
+                                           class = "FKt5n"
+                                           />      
+
+
+                                           <a 
+                                                href="javascript:void(0);" 
+                                                class="boton_svg"
+                                                id="suburu_usuario_buscar"
+                                                >
+                                               <img src="../../svg/more.svg" width="24"/>                            
+                                            </a>                            
+
+
+
+
+                                    <output       
+                                            class="t20"
+                                            id="suburu_usuario_descripcion">         
+                                    </output>                                
+
+                            </div>
+                        </div>  
+                    </div>                                           
+                </div>                
+    
+
+    
+</jsp:root>
+                
+
+

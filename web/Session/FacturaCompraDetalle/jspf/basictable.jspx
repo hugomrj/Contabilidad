@@ -1,0 +1,98 @@
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+    
+        <c:set var = "idRegistro" scope ="page" value = "0"/>
+    
+        <table class="tableA"
+               id="fvdlt_transaccion_tabla">
+            
+            
+                <thead>
+                    
+                    <tr>                       
+                        <th colspan="7">descripcion</th>
+                        <th>precio</th>
+                        <th colspan="3">valor de venta</th>
+                    </tr>                    
+                    
+                    
+                    <tr>
+                        <th class="c5">cantidad</th>
+                        <th class="c20"  colspan="6">descripcion</th>
+                        <th class="c7">unitario</th>
+                        <th class="c7">exenta</th>
+                        <th class="c7">5%</th>
+                        <th class="c7">10%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                        
+                    
+                    
+                    <c:forEach items="${facturaDetalles}" var ="lista" >
+
+                        <tr 
+                            data-id_transaccion ="${idRegistro}"
+                            >     
+                            
+                            <td class="c5n">${lista.cantidad}</td>
+                            <td class="c20t" colspan="6">${lista.descripcion}</td>
+                            <td class="c7n">${lista.precio_unitario}</td>
+                            <td class="c7n">${lista.porcentaje0}</td>
+                            <td class="c7n">${lista.porcentaje0}</td>
+                            <td class="c7n">${lista.porcentaje10}</td>
+
+                        </tr>  
+                        
+                        <c:set var="idRegistro" scope="page" value="${ idRegistro + 1}"/>  
+                        
+                    </c:forEach>
+                </tbody>
+                
+                
+                <tfoot>
+                
+                        <tr>     
+                            <td colspan="3"  class="c10" >Sub Totales</td>
+                            <td style="width: 20rem;font-weight: 100;" 
+                                id="fvdlt_numeroletras" colspan="5"></td>
+                            <td id="fvdlt_gravada0" class="c7n" ></td>
+                            <td id="fvdlt_gravada5" class="c7n"></td>
+                            <td id="fvdlt_gravada10" class="c7n"></td>
+
+                        </tr>                     
+                                        
+                        <tr>     
+                            <td colspan="3">Total a pagar</td>
+                            <td colspan="6"></td>
+                            <td colspan="2" id = "fvdlt_monto_total" class="c15n" ></td>
+                        </tr>                                             
+                        
+                        <tr>     
+                            <td colspan="3">Liquidacion IVA</td>
+                            <td class="c5"  style="border-right-width: 0px;"> (5%)</td>                                                        
+                            <td  id = "fvdlt_iva5" style="border-left-width: 0px;"></td>
+                            <td class="c5" style="border-right-width: 0px;" >(10%)</td>
+                            <td  id = "fvdlt_iva10" style="border-left-width: 0px;" ></td>
+                            <td style="border-right-width: 0px;" >Total IVA</td>
+                            <td colspan="3" id = "fvdlt_total_iva"  style="border-left-width: 0px;"  ></td>
+                        </tr>                                             
+                        
+                    
+                </tfoot> 
+                
+                
+        </table>
+
+
+     
+
+    
+    
+</jsp:root>
+                
+
+

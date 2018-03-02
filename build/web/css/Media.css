@@ -1,0 +1,346 @@
+/*
+responsive design
+1024+   1023-768    767-480     479-
+
+    320 -
+    321   a   480
+    481   a   768
+
+    768px
+    900px
+    1200px
+
+*/
+
+/*  esquema que pagina*/
+
+
+@media  (min-width : 1201px) {
+
+
+
+}
+
+
+
+
+
+
+@media  (min-width : 1025px) and (max-width : 1200px){
+
+
+
+}
+
+
+
+
+@media  (min-width : 769px) and (max-width : 1024px){
+    
+    section {
+        width: 95%;
+    }
+        /*
+    div .col100
+    {
+        margin-right: 1rem;        
+    }
+*/
+    
+
+    
+}
+
+
+
+@media  (min-width : 481px) and (max-width : 768px){
+    .centrado {        
+        width: 80%;        
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+      
+    section {
+        width: 100%;
+    }    
+    
+    
+    ul#menu li a {
+        width: 7rem;
+    }       
+    
+    div .col
+    {
+        margin-right: 1rem;
+    } 
+    
+    form label { 
+        width: 5rem;
+    }
+
+
+}
+    
+    
+
+
+
+@media  (min-width : 321px) and (max-width : 480px){
+    
+    .centrado {
+        width: 100%;
+        margin-top: 3rem;
+        margin-left: 10%;
+    }
+    
+    form label {                
+        margin-bottom: 0.5rem;
+
+    }    
+    
+    body {
+        margin-right: 0rem;
+        margin-left: 0rem;
+    }    
+    
+    ul#menu li a {
+        width: 6.5rem;
+    }    
+          
+  header {
+    height: 0rem;
+    }    
+
+    
+    aside{
+      width: 5%;
+    }    
+    
+    section {
+        width: 100%;
+    }    
+    
+    article {
+        margin-left: 0.5em;
+        margin-right: 0.5rem;
+    }    
+    
+    
+
+    
+    .ListaA ul  {
+        padding-left: 0.5rem;
+    }       
+    
+    
+    .ListaA   {
+        padding-top: 0.5rem;        
+    }    
+
+    .busqueda {    
+        padding-top: 0.5rem;
+
+    }    
+    
+    
+    .busqueda input{
+        width: 80%;        
+    }    
+    
+
+    
+    
+    
+    
+    .tableA {
+        margin-top: 3rem;
+        width: 100%;
+    }    
+    
+    
+    /*
+    .tableA tbody tr td,
+    .tableA thead tr th
+    { 
+        width: 40%;
+    }    
+    */
+    
+    
+    .tableA tbody tr,
+    .tableA tbody tr td,
+    .tableA thead tr th,
+    .tableA tfoot tr td
+    { 
+        display: block; 
+        float: left;
+    }    
+    
+    
+    form label {  
+        width: 5rem;
+    }    
+    
+    
+    form .campo {    
+        margin-bottom: 0rem;
+    }
+    
+    
+    /*
+    div .col100 {        
+        margin-right: 0rem;
+        width: 100%;
+        margin-right: 0rem;
+    }    
+    */
+       
+    /*
+    div .colT  .campo {
+        width: 100%;
+    }
+    */
+        
+    form .t30 {
+        width: 95%;
+    }       
+    
+    
+}
+
+
+
+
+
+
+
+@media (max-width: 320px) {
+    .centrado {        
+        width: 100%;
+        margin-top: 4rem;
+        margin-right: 0%;
+        margin-left: 0%;
+    }
+    
+
+    form label {        
+        margin-bottom: 0rem;        
+    }    
+
+    body {
+        margin-right: 0rem;
+        margin-left: 0rem;
+    }
+     
+    ul#menu li a {
+        width: 5.5rem;
+        text-align: left;
+        padding-left: 1rem;
+    }    
+        
+    header {
+      height: 0rem;
+      }
+        
+    article {
+      margin-left: 0em; 
+    }          
+      
+
+    aside{
+      width: 0%;
+    }
+
+    section {  
+      width: 100%;
+    }    
+
+
+    .ListaA ul li a {
+        width: 100%;         
+    }    
+
+    
+    .ListaA  ul {        
+        padding-left: 0rem;
+    }
+    
+    .ListaA   {
+        padding-top: 0rem;    
+    }
+    
+  
+    .busqueda {    
+        padding-top: 0.5rem;
+
+    }
+    
+    .busqueda input{
+        width: 80%;        
+    }    
+    
+    
+    
+    
+    
+    .tableA {
+        margin-top: 3rem;
+        width: 100%;
+    }    
+    
+    
+    /*
+    .tableA tbody tr td,
+    .tableA thead tr th
+    { 
+        width: 40%;
+    }    
+    */
+    
+    
+    .tableA tbody tr,
+    .tableA tbody tr td,
+    .tableA thead tr th,
+    .tableA tfoot tr td
+    { 
+        display: block; 
+        float: left;
+    }    
+
+/*
+    form .campo{
+        width: 100%;
+    }
+*/
+    
+
+    div .col {        
+        margin-right: 0rem;
+        width: 100%;
+        margin-right: 0rem;
+    }    
+
+    
+    form label {    
+        width: 5rem;
+    }
+    
+    
+    form .t30 {
+        width: 95%;
+    }    
+    
+    form .t10n {
+        width: 100%;
+    }      
+    
+
+    
+    
+}
+
+
+
+
+
+
