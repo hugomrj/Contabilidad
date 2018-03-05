@@ -28,7 +28,7 @@ function rol_descripcion_Json(id)
     var retornar = "";
     
     
-    if (jsonResponse.toString().trim() != "[]")
+    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )   
     {        
         var json = JSON.parse(jsonResponse); 
         retornar = VJson( json, "nombre");

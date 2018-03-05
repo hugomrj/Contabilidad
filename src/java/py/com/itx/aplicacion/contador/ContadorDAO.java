@@ -89,8 +89,6 @@ public class ContadorDAO  {
           
           contador = (Contador) persistencia.sqlToObject(sql, contador);
           
-          
-          
           return contador;          
           
       }

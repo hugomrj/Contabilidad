@@ -348,7 +348,7 @@ function InteraccionRecurso_basicform_Json(id)
     var jsonResponse = AjaxUrl( path );    
         
  
-    if (jsonResponse.toString().trim() != "[]")
+    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )   
     {        
         var json = JSON.parse(jsonResponse);          
                 
@@ -374,7 +374,7 @@ function InteraccionRecurso_basicform_Interaccion_Json(id)
     var jsonResponse = AjaxUrl( path );    
         
  
-    if (jsonResponse.toString().trim() != "[]")
+    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )   
     {        
         var json = JSON.parse(jsonResponse);          
                 

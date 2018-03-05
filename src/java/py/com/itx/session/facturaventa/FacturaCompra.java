@@ -14,7 +14,7 @@ import java.util.Date;
  */
 
 
-public class FacturaVenta {
+public class FacturaCompra {
     
     private Integer factura;
     private Long numero_factura;

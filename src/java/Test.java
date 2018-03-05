@@ -7,6 +7,8 @@ import py.com.itx.aplicacion.contador.Contador;
 import py.com.itx.aplicacion.contador.ContadorDAO;
 import py.com.itx.session.cliente.Cliente;
 import py.com.itx.session.cliente.ClienteDAO;
+import py.com.itx.session.facturaventa.FacturaCompraDAO;
+import py.com.itx.session.facturaventa.FacturaCompraSQL;
 import py.com.itx.sistema.modulo.ModuloDAO;
 import py.com.itx.sistema.usuario.Usuario;
 
@@ -31,16 +33,16 @@ public class Test {
         contador = new ContadorDAO().getContador(usuario);
         
             
-System.out.println(contador);
-                
+FacturaCompraSQL f = new FacturaCompraSQL();
 
-                Cliente instancia = new Cliente();               
-                Persistencia persistencia = new Persistencia();
-                instancia = (Cliente) persistencia.filtrarId(instancia, 6);
+        
+System.out.println(f.Lista(1, 2, "palabra hola"));
 
-                
-System.out.println(instancia);                
-System.out.println(instancia.getContador());                
+
+FacturaCompraDAO d = new FacturaCompraDAO();
+
+        
+                 
 
     }
     

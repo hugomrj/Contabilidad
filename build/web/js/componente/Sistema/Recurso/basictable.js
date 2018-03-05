@@ -27,7 +27,7 @@ function recurso_url_Json(id)
     
     var retornar = "";    
     
-    if (jsonResponse.toString().trim() != "[]")
+    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )   
     {        
         var json = JSON.parse(jsonResponse); 
         retornar = VJson( json, "url");

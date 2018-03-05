@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    Document   : colores
+    Created on : 09-oct-2013, 12:20:48
+    Author     : hugo
+-->
+
+<jsp:root version="2.0"
+        xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+    
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+        
+        <head>
+                        
+            
+            <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0" />    
+            <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>   
+            <jsp:directive.include file="../WEB-INF/jspf/sessiones.jspf"/>
+            
+ 
+            <style type="text/css" >            
+                    @import "../css/Basic.css" ;
+                    @import "../css/Esquema.css" ;
+                    @import "../css/Media.css" ;
+                    @import "../css/themes/Red900.css";                    
+            </style>
+
+
+            <script type="text/javascript">        
+                
+                <jsp:include page="../js/ajax/libreria.js" />
+                <jsp:include page="../js/utilidad/funciones.js"/>
+                <jsp:include page="../js/componente/FacturaVenta/Nuevo.js"/>
+                <jsp:include page="../js/componente/FacturaVenta/form.js"/>
+                    
+                    
+                    
+            </script>       
+
+        </head>
+        
+        <body>
+            
+            
+            <header>
+                <div></div>
+            </header>
+
+            <nav id = "nav">
+                <span></span>
+            </nav>
+
+            <div id="wrapper">
+                
+                <aside>
+                    <div></div>
+                </aside>
+
+                <section>
+                                                       
+                    <article>
+                        <h4>Factura de venta</h4>  
+                    </article>
+                    
+                    
+                    <article>
+                        
+                            <div id="form_body">
+                                <span></span>
+                            </div>                        
+                        
+                    </article>                      
+                    
+
+                    <article>                        
+                            <div id="tabla_factura_venta_detalle">
+                                <span></span>
+                            </div>                        
+                    </article>                            
+
+
+                    
+                            
+                    <article class="esp2">
+                        <span></span>
+                    </article>  
+                    
+                    
+                   <article class = "botones-footer"> 
+                        <div class ="commandbutton">
+                            <a 
+                                href="javascript:void(0);" 
+                                class="botonEnlace"
+                                id="fvn_facturar_orden"
+                                >
+                                Facturar</a>
+                        </div>       
+                      
+                        <div class ="commandbutton">
+                            <a 
+                                href="javascript:void(0);" 
+                                class="botonEnlace"
+                                id="fvn_cancelar_factura"
+                                >
+                                Cancelar</a>
+                        </div>                             
+
+                   </article>                             
+                    
+                    
+                </section>
+            </div>
+
+            <footer>
+                <h6>
+                                    
+                </h6>
+            </footer>
+                
+            
+        </body>
+                
+    </html>                
+                       
+</jsp:root>

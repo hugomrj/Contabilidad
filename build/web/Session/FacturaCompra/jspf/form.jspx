@@ -1,0 +1,203 @@
+
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+    
+
+    
+        
+    <form
+            action="#" 
+            method="post" 
+            id="facvenf_form" 
+            name='facvenf_form'
+        >        
+        
+        
+        
+        <div class="tabular">
+            
+            <div class="fila">
+                
+                <div class="col50">
+                    <div class="campo" >
+                        <label for="orden_trabajo" 
+                               class="t10"
+                               >  Orden Trabajo Nro:</label> 
+                        <input 
+                                TYPE="TEXT"
+                                name="orden_trabajo"                                                
+                                id="facvenf_orden_trabajo"
+                                class="t5n" 
+                                value ="0"
+                                />
+                        <a 
+                             href="javascript:void(0);" 
+                             class="boton_svg"
+                             id="facvenf_buscar_ordentrabajo"
+                             >
+                             <img src="../svg/more.svg" width="24"/>                            
+                         </a>  
+                    </div>     
+                </div>  
+                
+                <div class="col50">                    
+                    <div class="campo">
+
+                        <input 
+                                TYPE="hidden"
+                                name="factura"                                                
+                                id="facvenf_factura"
+                                />                        
+                        
+                        
+                        <label for="orden_trabajo"                               
+                               >Numero factura:</label> 
+                        <input 
+                                TYPE="TEXT"
+                                name="numero_factura"                                                
+                                id="facvenf_numero_factura"
+                                class="t10n"                                   
+                                disabled="disabled"
+                                value ="0"
+                                />
+                    </div>    
+                </div>        
+                
+            </div>
+            
+                         
+            <div class="fila">                
+                <div class="col50">
+                    <div class="campo">
+                        <label for="fecha_recepcion"                               
+                               >Fecha:</label> 
+                        <input 
+                                TYPE="DATE"
+                                name="fecha_recepcion"                                                
+                                id="facvenf_fecha"
+                                />
+                    </div>
+                </div>  
+                
+                
+                
+                <div class="col50">
+                    <div class="campo">
+                        
+                                                
+                        
+                        <label>
+                            <input type="radio" 
+                                   id ="opt_CO"
+                                   name="tipofactura"
+                                   checked="checked"/>
+                            Contado
+                        </label> 
+                        
+                                            
+                        <label>
+                            <input 
+                                type="radio" 
+                                id ="opt_CR"
+                                name="tipofactura"  />
+                            Credito
+                        </label> 
+                        
+                        
+                        
+                    </div>                    
+                    
+                </div>                  
+                
+                
+            </div>                                                        
+                                    
+            
+            
+
+            
+            <div class="fila">
+                <div class="col100">
+                    <div class="campo">
+                            <label for="cliente">Cliente:</label> 
+                            
+                            <input 
+                                TYPE="hidden"
+                                name="cliente"                                                
+                                id="facvenf_cliente"
+                                />                                  
+
+                            
+                            <output       
+                                    class="t5n"
+                                    id="facvenf_cliente_ou"> 
+                                <span></span>
+                            </output>                               
+                            
+                            
+                            
+                            <output       
+                                    class="t30"
+                                    id="facvenf_ClienteDescripcion">         
+                            </output>    
+                            
+                            
+                    </div>
+                </div>  
+            </div>                                           
+            <div class="fila">
+                <div class="col">
+                    <div class="campo">
+                            <label>Ruc:</label> 
+                            <output       
+                                    class="t10"
+                                    id="facvenf_Ruc">                                         
+                            </output>      
+                    </div>
+                </div>  
+                
+                
+                <div class="col">
+                    <div class="campo">
+                            <label>Tel:</label> 
+                            <output  
+                                    class="t10"
+                                    id="facvenf_Tel">                                
+                            </output>      
+                    </div>
+                </div>  
+            </div>                                           
+
+
+            <div class="fila">
+                <div class="col100">
+                    <div class="campo">
+                            <label>Direccion:</label> 
+                            <output                
+                                    class="t30"
+                                    id="facvenf_Direccion">                                
+                            </output>      
+                    </div>
+                </div>  
+            </div>               
+            
+        </div>  
+        
+        
+
+    </form>  
+    
+    
+    
+    
+    
+    
+    
+    
+</jsp:root>
+                
+
+

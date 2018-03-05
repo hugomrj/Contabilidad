@@ -34,7 +34,7 @@ function Rol_basicform_Json(id)
     var path = getRutaAbsoluta()+"/Rol/Linea.json?id="+id 
     var jsonResponse = AjaxUrl( path );    
     
-    if (jsonResponse.toString().trim() != "[]")
+    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )   
     {        
         var json = JSON.parse(jsonResponse);  
 

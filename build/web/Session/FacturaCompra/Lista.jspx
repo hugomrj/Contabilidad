@@ -20,19 +20,21 @@
             
             
             <style type="text/css" >            
-                    @import "../css/Basic.css" ;
-                    @import "../css/Esquema.css" ;
-                    @import "../css/Media.css" ;
-                    @import "../css/themes/DeepOrange400.css";
+                    @import "../../css/Basic.css" ;
+                    @import "../../css/Esquema.css" ;
+                    @import "../../css/Media.css" ;
+                    @import "../../css/themes/DeepOrange400.css";
             </style>
 
 
             <script type="text/javascript">                   
                
-                <jsp:include page="../js/ajax/libreria.js" />
-                <jsp:include page="../js/utilidad/funciones.js"/>
-                <jsp:include page="../js/componente/FacturaVenta/Lista.js"/>
-                <jsp:include page="../js/componente/FacturaVenta/basictable.js"/>
+                <jsp:include page="../../js/ajax/libreria.js" />
+                <jsp:include page="../../js/utilidad/funciones.js"/>
+                <jsp:include page="../../js/componente/Session/FacturaCompra/Lista.js"/>  
+                <jsp:include page="../../js/componente/Session/Cliente/simpletable.js"/>  
+                    
+                    
                 
             </script>       
 
@@ -56,7 +58,17 @@
                 </aside>
 
                 <section>
-                                                       
+                                   
+                    
+                    <article style="border-bottom: solid 1px Silver;">
+                        <div id="cabecera_cliente">                            
+                        </div>
+                    </article>                    
+
+
+                    
+
+                    
                     <article>
                         <h4>Factura de Compras</h4>  
                     </article>

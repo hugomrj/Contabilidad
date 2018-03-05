@@ -49,7 +49,7 @@ public class ClienteJSON extends HttpServlet {
             return;
         }
 
-        
+ 
         
         try 
         {
@@ -67,7 +67,7 @@ public class ClienteJSON extends HttpServlet {
                 Cliente instancia = new Cliente();               
                 Persistencia persistencia = new Persistencia();
                 instancia = (Cliente) persistencia.filtrarId(instancia, codigo);
-                
+
 
                 // controlar si contador es igual al codigo de session       
                 if (instancia.getContador() != null){
@@ -97,6 +97,11 @@ public class ClienteJSON extends HttpServlet {
 
             }            
         } 
+        catch (Exception ex) 
+        {
+            out.println("[]");  
+        }
+        
         finally 
         {
             out.close();

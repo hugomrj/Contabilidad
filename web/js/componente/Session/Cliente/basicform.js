@@ -109,7 +109,7 @@ function Cliente_busqueda_Json(id)
     var path = getRutaAbsoluta()+"/Cliente/Linea.json?id="+id 
     var jsonResponse = AjaxUrl( path );    
    
-    if (jsonResponse.toString().trim() != "[]")
+    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )   
     {        
         var json = JSON.parse(jsonResponse);    
 

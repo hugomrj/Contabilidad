@@ -162,7 +162,7 @@ function UsuarioRol_basicform_Json(id)
     var jsonResponse = AjaxUrl( path );    
         
  
-    if (jsonResponse.toString().trim() != "[]")
+    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )   
     {        
         var json = JSON.parse(jsonResponse);          
         
