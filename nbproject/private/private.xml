@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/src/java/py/com/itx/session/cliente/Cliente_Controlador_Agregar.java</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/src/java/py/com/itx/session/cliente/Cliente_Coleccion_Lista.java</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/Session/Cliente/Lista.jspx</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/Session/Cliente/Agregar.jspx</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/componente/Session/Cliente/Lista.js</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/src/java/py/com/itx/aplicacion/contador/ContadorDAO.java</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/src/java/Test.java</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/componente/Session/FacturaCompra/Nuevo.js</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/utilidad/funciones.js</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/componente/Session/FacturaCompraDetalle/basicform.js</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/Session/FacturaCompra/Nuevo.jspx</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/src/java/py/com/itx/session/facturacompra/FacturaCompra_Transaccion_Fin.java</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/Session/FacturaCompra/Lista.jspx</file>
         </group>
     </open-files>
 </project-private>

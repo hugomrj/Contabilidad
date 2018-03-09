@@ -4,7 +4,8 @@
  */
 
 
-package py.com.itx.session.facturaventa;
+package py.com.itx.session.facturacompradetalle;
+
 
 
 import py.com.itx.session.cliente.*;
@@ -31,11 +32,11 @@ import py.com.itx.sistema.usuario.UsuarioSeguridadBean;
  */
 
 
-@WebServlet(name = "FacturaCompra_Coleccion_Lista", 
-        urlPatterns = {"/FacturaCompra/Coleccion/Lista"})
+@WebServlet(name = "FacturaCompraDetalle_Coleccion_Lista", 
+        urlPatterns = {"/FacturaCompraDetalle/Coleccion/Lista"})
 
 
-public class FacturaCompra_Coleccion_Lista extends HttpServlet {
+public class FacturaCompraDetalle_Coleccion_Lista extends HttpServlet {
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -76,17 +77,12 @@ public class FacturaCompra_Coleccion_Lista extends HttpServlet {
         Integer page = httpRequest.getPage(request);
                
         
-        // busqueda
-        String strBuscar = httpRequest.getBuscar(request);
-        
             
-            FacturaCompraDAO dao = new FacturaCompraDAO();            
-            List<Map<String, Object>> rows = dao.Lista(cliente, 
-                    contador.getContador(), 
-                    strBuscar, page);    
+            FacturaCompraDetalleDAO dao = new FacturaCompraDetalleDAO();            
+        //    List<Map<String, Object>> rows = dao.Lista(factura, page)
                         
           
-            request.setAttribute("lista", rows);            
+          //  request.setAttribute("lista", rows);            
             request.setAttribute("totalRegistros", dao.totalRegistros);
             
             request.getRequestDispatcher("/Session/FacturaCompra/jspf/basictable.jspx").include(request, response);                
@@ -117,7 +113,7 @@ public class FacturaCompra_Coleccion_Lista extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FacturaCompra_Coleccion_Lista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FacturaCompraDetalle_Coleccion_Lista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -134,7 +130,7 @@ public class FacturaCompra_Coleccion_Lista extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FacturaCompra_Coleccion_Lista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FacturaCompraDetalle_Coleccion_Lista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

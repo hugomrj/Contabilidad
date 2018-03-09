@@ -104,7 +104,7 @@
                             <a 
                                 href="javascript:void(0);" 
                                 class="botonEnlace"
-                                id="fcompral_nuevo"
+                                id="nuevo_factura_compra"
                                 >
                                 Nuevo</a>
                         </div>                             

@@ -6,7 +6,6 @@
 
 
 package py.com.itx.aplicacion.contador;
-import java.util.Date;
 import py.com.itx.sistema.usuario.Usuario;
 
 

@@ -1,32 +1,56 @@
 
 
-
-
 window.onload = function() {
+
+/*
+alert(localStorage.getItem("nombre_variable"));
+localStorage.removeItem("nombre_variable");
+*/
 
     page = getParametroValor('page'); 
     AjaxPeticion(getRutaAbsoluta()+'/MenuPrincipal','nav');     
-      
     
     
-    Cabecera_cliente();
-      
+    
+        var cliente =  localStorage.getItem("storageCliente");
+        
+        if (isNaN(cliente)){
+            cliente = 0;
+        }
+        
+//localStorage.setItem("storageCliente",control);           
+    
+    
+    Cabecera_cliente(cliente);
+    localStorage.removeItem("storageCliente");
+    
+    
     FacturaVenta_tabla_lista ( );
     
     
     
-   
-    /*
-    var fvl_nuevo = document.getElementById('fvl_nuevo');
-    fvl_nuevo.addEventListener('click',
-        function(event) {
+    
+    var nuevo_factura_compra = document.getElementById('nuevo_factura_compra');
+    nuevo_factura_compra.addEventListener('click',
+        function(event) {                        
+           
+            var control = AjaxUrl( getRutaAbsoluta()
+                    +'/Cliente/Funcion/PerteneceContador?cliente='
+                    +document.getElementById('clic_cliente').value );                            
             
-            location.href="../FacturaVenta/Transaccion/Inicio";
-            
+            if (control.toString().trim() == 'true'){
+                location.href= getRutaAbsoluta()+"/FacturaCompra/Transaccion/Inicio?cliente="
+                    +document.getElementById('clic_cliente').value;      
+                
+            }else
+            {
+                alerta_error("Falta seleccionar Cliente");                            
+            }
+                
         },
         false
     );    
-*/
+
    
    
    
@@ -51,17 +75,11 @@ window.onresize = function() {
 
 function FacturaVenta_tabla_lista ( ){
 
-
-
             AjaxPeticion(getRutaAbsoluta()+'/FacturaCompra/Coleccion/Lista?buscar='
                 +document.getElementById('buscar').value  
                 +"&page="+page
                 +"&cliente="+document.getElementById('clic_cliente').value  
                 ,'tab_body');          
-                
-                
-          
-                
                 
                 
     /*
@@ -82,25 +100,31 @@ function FacturaVenta_tabla_lista ( ){
 
 
 
-function Cabecera_cliente ( ){
+function Cabecera_cliente ( cliente ){
 
 
-            AjaxPeticion('../Cliente/jspf/cabeceraCliente.jspx'
+        AjaxPeticion( getRutaAbsoluta()+'/Session/Cliente/jspf/cabeceraCliente.jspx'
                 ,'cabecera_cliente');          
 
 
-          // accion de botones      
+
+          // cargar datos en el caso que existan      
+          if (cliente != 0){              
+              document.getElementById( 'clic_cliente').value = cliente;
+          }
 
 
-
+        // accion de botones      
         var clic_cliente = document.getElementById( 'clic_cliente');
         clic_cliente.onblur  = function() {                
             clic_cliente.value  = fmtNum(clic_cliente.value);           
             var idvalor = clic_cliente.value;                
             document.getElementById( 'cliente_descripcion').innerHTML = cliente_descripcion_Json( idvalor );         
+            FacturaVenta_tabla_lista ( );
         };     
         clic_cliente.onblur();
-
+        
+        
 
 
 

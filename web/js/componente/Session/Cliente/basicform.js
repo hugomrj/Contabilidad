@@ -1,16 +1,14 @@
 
 
-
-
 function Cliente_basicform (   )
 {
+    
     /*
     var cli_cliente_tipo = document.getElementById( 'cli_cliente_tipo');    
     cli_cliente_tipo.onChange  = function() {        
     //    cli_cedula.value  = fmtNum(cli_cedula.value);                     
     };     
     */
-   
    
     var cli_cliente_tipo = document.getElementById('cli_cliente_tipo');
     cli_cliente_tipo.addEventListener('change',
@@ -67,7 +65,7 @@ function Cliente_basicform_Json(id)
         document.getElementById('cli_cedula').value = VJson( json, "cedula", "N");
         document.getElementById('cli_nombre').value = VJson( json, "nombre");
         document.getElementById('cli_apellido').value = VJson( json, "apellido");
-        document.getElementById('cli_razon_social').value = VJson( json, "razon_social");;
+        document.getElementById('cli_razon_social').value = VJson( json, "razon_social");
         document.getElementById('cli_email').value = VJson( json, "email");
         document.getElementById('cli_direccion').value = VJson( json, "direccion");
         document.getElementById('cli_ciudad').value = VJson( json, "ciudad");
@@ -75,13 +73,11 @@ function Cliente_basicform_Json(id)
         document.getElementById('cli_ruc').value = VJson( json, "ruc");
         
         document.getElementById('cli_contador').value = json[0]["contador"]["contador"] ;  
-       
-       
+              
     }
     else
     {        
-               
-        
+                      
         document.getElementById('cli_cliente_tipo').value = "";
 
         document.getElementById('cli_cliente').value = "0";
@@ -121,7 +117,6 @@ function Cliente_busqueda_Json(id)
         document.getElementById('vicTel').value = VJson( json, "telefono"); 
         document.getElementById('vidDireccion').value = VJson( json, "direccion"); 
         document.getElementById('vicCiudad').value = VJson( json, "ciudad"); 
-        
   
     }  
     else    
@@ -139,15 +134,13 @@ function Cliente_busqueda_Json(id)
 
 
 
-function Clientes_AgregarEditar_validacion (  ){
 
+function Clientes_AgregarEditar_validacion (  ){
 
     var cli_cliente_tipo = document.getElementById('cli_cliente_tipo').value.toString().trim();
 
-
     if ( cli_cliente_tipo === "Fisica")
     {
-        
         var cli_cedula = document.getElementById('cli_cedula');      
         if ( parseInt(cli_cedula.value) <= 0 ) 
         {
@@ -162,7 +155,6 @@ function Clientes_AgregarEditar_validacion (  ){
     {
         
     }
-
 
     return true;
     
@@ -221,8 +213,7 @@ function Cliente_modal_agregar ( dom )
                     linea_id = control;    
                     asignarValor(  dom , linea_id );
                     document.getElementById( dom ).onblur();  
-                    clia_cerrar.click();
-                     
+                    clia_cerrar.click();                     
                 }
                 else{                    
                     alerta_error(control);

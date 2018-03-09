@@ -45,8 +45,7 @@ public class Usuario_Controlador_Login extends HttpServlet {
         if (request.getHeader("referer") == null) {
             response.sendRedirect("../login.jspx");    
         }
-                        
-        request.getSession().setAttribute("SessionTheme", "themes/Blue.css");  
+
         
         String strCuenta = (String) request.getParameter("cuenta");
         String strClave = (String) request.getParameter("clave");
@@ -80,7 +79,9 @@ public class Usuario_Controlador_Login extends HttpServlet {
             
             request.getSession().setAttribute("SessionModulos", ListaModulos);                   
             
-            request.getSession().setAttribute("SessionUsuario", usuario);  
+            request.getSession().setAttribute(
+                    new UsuarioSession().getSessionNombre()
+                    ,usuario);  
             
             
             List<Recurso> listaRecurso = new ArrayList<Recurso>();  

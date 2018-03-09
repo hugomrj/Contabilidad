@@ -3,6 +3,7 @@
 
 function cliente_descripcion_Json(id)
 {      
+
     
     var path = getRutaAbsoluta()+"/Cliente/Linea.json?id="+id 
     var jsonResponse = AjaxUrl( path );    

@@ -116,8 +116,9 @@ public class UsuarioSeguridadBean {
     
     public boolean isAccesoServlet (HttpServletRequest request ) throws Exception {
       
-
-        this.usuario = (Usuario) request.getSession().getAttribute("SessionUsuario");
+        
+        this.usuario = (Usuario) new UsuarioSession().getUsuario(request);
+        
         if (this.usuario == null){
             return false;
         }

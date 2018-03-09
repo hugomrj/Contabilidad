@@ -92,6 +92,8 @@ function fmtNum(num) {
 
 
 
+
+/*
 function validaFloat(valor) {
     var RE =/^[0-9]+([.])?([0-9]+)?$/;
     if (RE.test(valor)) {
@@ -101,6 +103,37 @@ function validaFloat(valor) {
     }
 }
 
+
+function validateDecimal(valor) {
+    var RE = /^\d*\.?\d*$/;
+    if (RE.test(valor)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+*/
+
+
+
+
+
+function validateDecimal(valor) {    
+    
+    
+    var RE = /^\./;
+    if (RE.test(valor)) {
+        return false;
+    } 
+
+    var RE = /^[0-9]{0,}\.?[0-9]{1,}$/;        
+    
+    if (RE.test(valor)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
 

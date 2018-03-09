@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package py.com.itx.session.facturaventa;
+package py.com.itx.session.facturacompradetalle;
+
 
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.Map;
 import nebuleuse.ORM.Conexion;
 import nebuleuse.ORM.xml.Global;
 import nebuleuse.util.Lista;
+import py.com.itx.session.facturacompra.FacturaCompraSQL;
 
 
 /**
@@ -21,7 +23,7 @@ import nebuleuse.util.Lista;
  * @author hugom_000
  */
 
-public class FacturaCompraDAO  {
+public class FacturaCompraDetalleDAO  {
         
         Conexion conexion = new Conexion();
         Statement  statement ;
@@ -31,14 +33,14 @@ public class FacturaCompraDAO  {
         public Integer totalRegistros = 0;
         
     
-    public FacturaCompraDAO ( ) throws IOException  {
+    public FacturaCompraDetalleDAO ( ) throws IOException  {
         conexion.conectar();
         lista = new Lista();
     }
 
         
     
-    public List<Map<String, Object>>  Lista ( Integer cliente, Integer contador,  String buscar, Integer page )
+    public List<Map<String, Object>>  Lista ( Integer factura, Integer page )
             throws Exception {
 
             
@@ -50,8 +52,9 @@ public class FacturaCompraDAO  {
             
             statement = conexion.getConexion().createStatement();  
             
-            String sql = new FacturaCompraSQL().Lista(cliente, contador, buscar);
-                    
+            //String sql = FacturaCompraDetalleSQL..
+            
+            String sql = new FacturaCompraDetalleSQL().Lista(factura);
                
             String sqlCount = " select count(*) as rows from ( "
                     + sql 

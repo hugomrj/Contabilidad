@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package py.com.itx.session.facturaventa;
+package py.com.itx.session.facturacompra;
 
 
 

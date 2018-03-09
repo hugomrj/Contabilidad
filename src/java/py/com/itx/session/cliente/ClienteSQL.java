@@ -66,6 +66,29 @@ public String  Lista ( String buscar, Integer contador)
     }              
 
 
+public String  PerteneceContador ( Integer cliente, Integer contador)
+            throws Exception {
+    
+            String sql = "";        
+
+            if (contador == null){
+                contador = 0;
+            }
+            
+            
+            sql = " "+
+                " SELECT cliente\n" +
+                "  FROM aplicacion.clientes\n" +
+                "  where cliente = \n" + cliente +
+                "  and contador =" + contador+ 
+                "" ;
+                        
+
+            return sql ;
+             
+    }              
+
+
 
 
     

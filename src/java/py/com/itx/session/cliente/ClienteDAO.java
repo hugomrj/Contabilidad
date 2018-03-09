@@ -8,9 +8,12 @@ package py.com.itx.session.cliente;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nebuleuse.ORM.Conexion;
 import nebuleuse.ORM.xml.Global;
 import nebuleuse.util.Lista;
@@ -79,6 +82,30 @@ public class ClienteDAO  {
             return lista.resultsetToList(resultset ) ;
              
     }              
+  
+    
+    
+    public Boolean IsPerteneceContador(Integer cliente, Integer contador){
+    
+            try {
+                
+                statement = conexion.getConexion().createStatement();
+                resultset = statement.executeQuery(new ClienteSQL().PerteneceContador(cliente, contador) );
+                
+                if (resultset.next() == false) {
+                    return false ;
+                }
+                else{
+                    return true ;
+                }   
+            
+            } catch (Exception ex) {
+                return false ;
+            }
+    }
+    
+    
+    
     
 }
 
