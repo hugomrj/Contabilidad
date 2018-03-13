@@ -36,6 +36,7 @@
 
                         <tr 
                             data-id_transaccion ="${idRegistro}"
+                            data-orden ="${lista.compra_detalle}"
                             >     
                             
                             <td class="c5n">${lista.cantidad}</td>

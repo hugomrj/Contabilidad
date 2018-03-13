@@ -6,8 +6,9 @@
 package py.com.itx.session.facturacompradetalle;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import py.com.itx.sistema.recurso.Recurso;
+
 
 
 
@@ -84,22 +85,54 @@ public class FacturaCompraDetalle_Transaccion {
     }        
         
 
-    public Integer getIva5() {
+    public Long getIva5() {
         
-        Long resultado = this.getGravada5(); 
-        return  Math.round(resultado / 21);
+        Long resultado = this.getGravada5();         
+        Integer formula = Math.round(resultado / 21);
+        
+        return  Long.parseLong(formula.toString())  ;
     }   
 
-    public Integer getIva10() {
+    public Long getIva10() {
         
         Long resultado = this.getGravada10(); 
-        return  Math.round(resultado / 11);
+        Integer formula = Math.round(resultado / 11);
+        
+        return  Long.parseLong(formula.toString())  ;
+                
     }       
     
     
-    public Integer getIvaTotal() {                
+    public Long getIvaTotal() {                
         return  this.getIva5() + this.getIva10();
     }           
     
+        
+
+    public FacturaCompraDetalle  getCompraDetalle( Integer id) {       
+        
+        for (FacturaCompraDetalle fcd: this.listaObjeto) {                                                
+            if (fcd.getCompra_detalle() ==  id){
+                return fcd;                
+            }
+        }        
+        return null ;
+    }       
+   
+    
+
+    public void Indexar( ) {       
+        
+        for(int i = 0; i < this.listaObjeto.size(); i++) {            
+            this.listaObjeto.get(i).setCompra_detalle(i);
+        }        
+    }       
+            
+    
+
+    
+    
 }
 
+      
+        

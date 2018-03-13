@@ -27,11 +27,11 @@ import py.com.itx.sistema.usuario.UsuarioSeguridadBean;
 
 
 
-@WebServlet(name = "FacturaCompraDetalle_Transaccion_Agregar",
-        urlPatterns = {"/FacturaCompraDetalle/Transaccion/Agregar"})
+@WebServlet(name = "FacturaCompraDetalle_Transaccion_Editar",
+        urlPatterns = {"/FacturaCompraDetalle/Transaccion/Editar"})
 
 
-public class FacturaCompraDetalle_Transaccion_Agregar extends HttpServlet {
+public class FacturaCompraDetalle_Transaccion_Editar extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -40,30 +40,28 @@ public class FacturaCompraDetalle_Transaccion_Agregar extends HttpServlet {
                 
         PrintWriter out = response.getWriter();     
         
+        
+        /*
         // controlusuario
         if (!( new UsuarioSeguridadBean().isAccesoServlet(request))) {   
             request.getRequestDispatcher("/error403.jspx").include(request, response);                
             return;
         }               
-
+        */
+        
+        
         try
         {
+
+            Integer id = Integer.parseInt(request.getParameter("id"));        
             
-
-
-
             FacturaCompraDetalle_Transaccion transaccion = new FacturaCompraDetalle_Transaccion();                    
-
-            //List<FacturaCompraDetalle> comprasDetalles = new ArrayList<FacturaCompraDetalle>(); 
-            
             
             transaccion.setListaObjeto(  
                     (List<FacturaCompraDetalle>) 
                             request.getSession().getAttribute(transaccion.getNombre())
                 );            
-
-
-            
+    
             Persistencia persistencia = new Persistencia();
             FacturaCompraDetalle instancia = new FacturaCompraDetalle();
             instancia = (FacturaCompraDetalle) persistencia.extraerRegistro(request, instancia);
@@ -90,64 +88,16 @@ public class FacturaCompraDetalle_Transaccion_Agregar extends HttpServlet {
                     }                            
                 }
             }
-            
-
-            transaccion.getListaObjeto().add(instancia);
-            transaccion.Indexar();                        
                         
+            transaccion.getListaObjeto().set(id, instancia);
+           
+                        
+            transaccion.Indexar();                       
             request.getSession().setAttribute( 
                     transaccion.getNombre(), 
                     transaccion.getListaObjeto()
-            );  
-            
-            
+            );              
             out.println(transaccion.getListaObjeto().size());              
-            
-                    
-            
-            
-/*
-            
-            String transaccionOrdenTrabajoDetalles = "transaccionOrdenTrabajoDetalles";
-            List<OrdenTrabajoDetalle> ordenesDetalles = new ArrayList<OrdenTrabajoDetalle>(); 
-            
-            
-            ordenesDetalles = (List<OrdenTrabajoDetalle>) request.getSession().getAttribute(
-                    transaccionOrdenTrabajoDetalles);
-            
-            
-            OrdenTrabajoDetalle  instancia = new OrdenTrabajoDetalle();
-            Persistencia persistencia = new Persistencia();
-            instancia = (OrdenTrabajoDetalle) persistencia.extraerRegistro(request, instancia);
-
-
-            // condicional de donde cargar los porcentajes
-            instancia.setPorcentaje0(0L);
-            instancia.setPorcentaje5(0L);
-            instancia.setPorcentaje10(0L);
-            
-            
-            if (instancia.getImpuesto() == 10)
-            {
-                instancia.setPorcentaje10( instancia.getSub_total() );
-            }
-            else if (instancia.getImpuesto() == 5)
-            {
-                instancia.setPorcentaje5( instancia.getSub_total() );
-            }
-            else if (instancia.getImpuesto() == 0)
-            {
-                instancia.setPorcentaje0( instancia.getSub_total() );
-            }
-            
-            
-            ordenesDetalles.add(instancia);
-            
-            request.getSession().setAttribute( transaccionOrdenTrabajoDetalles, ordenesDetalles );
-            
-            out.println(ordenesDetalles.size());  
-       
-           */
             
         }
         
@@ -157,9 +107,6 @@ public class FacturaCompraDetalle_Transaccion_Agregar extends HttpServlet {
             out.println(ex.getMessage());      
         }
 
-                        
-
-        
 
                 
     }
@@ -179,7 +126,7 @@ public class FacturaCompraDetalle_Transaccion_Agregar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FacturaCompraDetalle_Transaccion_Agregar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FacturaCompraDetalle_Transaccion_Editar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -197,7 +144,7 @@ public class FacturaCompraDetalle_Transaccion_Agregar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FacturaCompraDetalle_Transaccion_Agregar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FacturaCompraDetalle_Transaccion_Editar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

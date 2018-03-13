@@ -25,6 +25,18 @@ window.onload = function() {
     );
    
 
+
+        var clil_agregar = document.getElementById('clil_agregar');
+        clil_agregar.addEventListener('click',
+            function(event) {
+                location.href= getRutaAbsoluta()+"/Session/Cliente/Agregar.jspx";
+            },
+            false
+        );    
+
+
+
+
 };
 
 
@@ -69,14 +81,7 @@ function Clientes_tabla_lista ( ){
     
     
     
-            var clil_agregar = document.getElementById('clil_agregar');
-            clil_agregar.addEventListener('click',
-                function(event) {
-                    location.href= getRutaAbsoluta()+"/Session/Cliente/Agregar.jspx";
-                },
-                false
-            );    
-    
+
     
 }
 

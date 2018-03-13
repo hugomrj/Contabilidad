@@ -26,6 +26,7 @@ public class FacturaCompraDetalle {
     private Long impuesto5;
     private Long impuesto10;
     private Long sub_total;
+    private Integer impuesto_porcentaje;
 
 
 
@@ -100,6 +101,14 @@ public class FacturaCompraDetalle {
 
     public void setCompra_detalle(Integer compra_detalle) {
         this.compra_detalle = compra_detalle;
+    }
+
+    public Integer getImpuesto_porcentaje() {
+        return impuesto_porcentaje;
+    }
+
+    public void setImpuesto_porcentaje(Integer impuesto_porcentaje) {
+        this.impuesto_porcentaje = impuesto_porcentaje;
     }
     
     

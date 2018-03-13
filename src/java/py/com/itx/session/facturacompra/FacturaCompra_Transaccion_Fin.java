@@ -49,10 +49,6 @@ public class FacturaCompra_Transaccion_Fin extends HttpServlet {
                 return;
             }               
 
-
-            
-            
-            
             
         try
         {
@@ -62,28 +58,14 @@ public class FacturaCompra_Transaccion_Fin extends HttpServlet {
             //controlar si existe contador
             Contador contador = new Contador();
             contador = new ContadorDAO().getContador(request);            
-            
+           
             
             FacturaCompraDetalle_Transaccion transaccion = new FacturaCompraDetalle_Transaccion();                    
-            
-            //List<FacturaCompraDetalle> comprasDetalles = new ArrayList<FacturaCompraDetalle>(); 
-            
             
             transaccion.setListaObjeto(  
                     (List<FacturaCompraDetalle>) 
                             request.getSession().getAttribute(transaccion.getNombre())
                 );            
-
-            
-            /*            
-            // detalles
-            String transaccionFacturaVenta_Detalles = "facturaDetalles";
-            List<FacturaVentaDetalle> facturaDetalles = new ArrayList<FacturaVentaDetalle>();                         
-            facturaDetalles = (List<FacturaVentaDetalle>) request.getSession().getAttribute(
-                    transaccionFacturaVenta_Detalles);            
-            */
-            
-
             
             
             // cabecera            
@@ -94,30 +76,31 @@ public class FacturaCompra_Transaccion_Fin extends HttpServlet {
             factura_compra.setUsuario(usuario.getUsuario());            
             factura_compra.setContador(contador);
             
+            
+            // datos de pie
+            factura_compra.setMonto_total(transaccion.getMontoTotal() );
+            factura_compra.setGravada0( transaccion.getGravada0() );
+            factura_compra.setGravada5( transaccion.getGravada5() );
+            factura_compra.setGravada10( transaccion.getGravada10() );
+            factura_compra.setIva5( transaccion.getIva5()  );
+            factura_compra.setIva10(  transaccion.getIva10() );
+            factura_compra.setTotal_iva( (factura_compra.getIva5() + factura_compra.getIva10()) );
+            
             factura_compra = (FacturaCompra) persistencia.insert(factura_compra);
             
-            
-            
-            
-            // cargar detalles   
-            // cargas las cuadriculas con for            
+
+            // cargar detalles        
             for (FacturaCompraDetalle fc_det : transaccion.getListaObjeto()) {      
-                
-                
+                                
                 fc_det.setFactura(factura_compra.getFactura());
                 fc_det.setCompra_detalle(0);
                 persistencia.insert(fc_det);
                 
             }
-      
-            
-    
-            
+  
             request.getSession().removeAttribute(transaccion.getNombre());
             out.println(factura_compra.getFactura());      
-            
-            
-            
+
             
         }
         

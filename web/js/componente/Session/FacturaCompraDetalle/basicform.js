@@ -5,22 +5,10 @@ function CompraDetalle_modal_agregar (  )
         
     VentanaModal("subSFCDa",  
         getRutaAbsoluta()+'/Session/FacturaCompraDetalle/jspf/agregarTransaccion.jspx', 800 );    
-    
-
+   
+    CompraDetalle_modal_basicform();
     var fcd_cantidad = document.getElementById('fcd_cantidad');   
     fcd_cantidad.value = 0;
-    fcd_cantidad.onblur  = function() {   
-   
-        if (!(validateDecimal(fcd_cantidad.value))){
-            fcd_cantidad.value = 0;
-        }
-        formulaSubTotal();        
-   
-    };     
-    fcd_cantidad.onblur();    
-    fcd_cantidad.focus();
-    fcd_cantidad.select();
-    
 
 
     var fcd_precio_unitario = document.getElementById('fcd_precio_unitario');   
@@ -38,25 +26,18 @@ function CompraDetalle_modal_agregar (  )
         function()
         {           
       
-            if (CompraDetalle_Agregar_transaccion_validacion()){
+            if (CompraDetalle_transaccion_validacion()){
                 
-                verificacion_porcentaje();
-                
+                verificacion_porcentaje();                
                 var form = document.getElementById("fcdat_form");                            
                 var accion =  getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Agregar"; 
                 var control = AjaxPeticionURL( accion, getDataForm(form) );                
          
                 if (!(isNaN(control)))
-                {   
-      
-      
+                {         
                     FacturaCompraDetalle_tabla("tabla_compra_detalle");
-      /*
-                    document.getElementById("tabla_compra_detalle").innerHTML 
-                        =  AjaxUrl( getRutaAbsoluta()+'/FacturaCompraDetalle/Transaccion/Lista');                        
-         */           
-                    fcdat_cerrar.click();
-                    
+                    FacturaVentaDetalle_form_formato();                       
+                    fcdat_cerrar.click();                    
                 }
                 else
                 {    
@@ -66,6 +47,7 @@ function CompraDetalle_modal_agregar (  )
             
         },
         false
+                
     );
 
 
@@ -96,7 +78,7 @@ function CompraDetalle_modal_agregar (  )
 
 
 
-function CompraDetalle_Agregar_transaccion_validacion (  ){
+function CompraDetalle_transaccion_validacion (  ){
 
 
     var fcd_cantidad = document.getElementById('fcd_cantidad');   
@@ -135,7 +117,7 @@ function verificacion_porcentaje (  ){
 
 
         var fcd_impuesto_selector = document.getElementById('fcd_impuesto_selector').value.toString().trim();
-        var fcd_porcentaje = document.getElementById('fcd_porcentaje');
+        var fcd_porcentaje = document.getElementById('fcd_impuesto_porcentaje');
     
         if ( fcd_impuesto_selector === "10")
         {            
@@ -155,7 +137,6 @@ function verificacion_porcentaje (  ){
         }
 
 }
-
 
 function formulaSubTotal (  ){
     
@@ -179,14 +160,140 @@ function formulaSubTotal (  ){
 
 
 
+function CompraDetalle_modal_EditarBorrar ( id )
+{
+        
+    VentanaModal("subSFCDeb",  
+        getRutaAbsoluta()+'/Session/FacturaCompraDetalle/jspf/editarBorrarTransaccion.jspx', 800 );    
+                
+        // falta un json de transaccion
+                
+        var path = getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Linea.json?id=" + id
+        var jsonResponse = AjaxUrl( path );    
+
+        if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )           
+        {  
+            var json = JSON.parse(jsonResponse); 
+            
+            document.getElementById('fcd_compra_detalle').value = VJson( json, "compra_detalle", "N");       
+            
+            document.getElementById('fcd_cantidad').value = VJson( json, "cantidad", "N");       
+            document.getElementById('fcd_descripcion').value = VJson( json, "descripcion");       
+            document.getElementById('fcd_precio_unitario').value = VJson( json, "precio_unitario","N");  
+            
+            var fcd_impuesto_porcentaje = document.getElementById('fcd_impuesto_porcentaje');
+            fcd_impuesto_porcentaje.value = VJson( json, "impuesto_porcentaje","N");       
+
+            if (fcd_impuesto_porcentaje.value == 10){
+                document.getElementById("fcd_impuesto_selector").selectedIndex = 0;                
+            }                      
+            if (fcd_impuesto_porcentaje.value == 5){
+                document.getElementById("fcd_impuesto_selector").selectedIndex = 1;                
+            }      
+            if (fcd_impuesto_porcentaje.value == 0){
+                document.getElementById("fcd_impuesto_selector").selectedIndex = 2;                
+            }      
+            document.getElementById('fcd_sub_total').value = VJson( json, "sub_total","N");  
+
+        }
+
+        CompraDetalle_modal_basicform();
+
+
+        var fcdebt_Editar = document.getElementById('fcdebt_Editar');   
+        fcdebt_Editar.addEventListener('click',
+            function()
+            {           
+
+                if (CompraDetalle_transaccion_validacion()){
+                    verificacion_porcentaje();                                  
+                    var form = document.getElementById("fcdebt_form");                            
+                    var accion =  getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Editar?id="+id; 
+               
+                    var control = AjaxPeticionURL( accion, getDataForm(form) );                   
+                    if (!(isNaN(control)))
+                    {         
+                        FacturaCompraDetalle_tabla("tabla_compra_detalle");
+                        FacturaVentaDetalle_form_formato();                       
+                        fcdebt_cancelar.click();                    
+                    }
+                    else
+                    {    
+                        alerta_error(control);
+                    }
+                }    
+            },
+            false
+        );
+
+
+
+        var fcdebt_Borrar = document.getElementById('fcdebt_Borrar');   
+        fcdebt_Borrar.addEventListener('click',
+            function()
+            {                                        
+
+                var form = document.getElementById("fcdebt_form");     
+                var accion =  getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Borrar?id="+id;                
+                var control = AjaxPeticionURL( accion, getDataForm(form) );                
+
+                if (!(isNaN(control)))
+                {                       
+                        FacturaCompraDetalle_tabla("tabla_compra_detalle");
+                        FacturaVentaDetalle_form_formato();                       
+                        fcdebt_cancelar.click();      
+                }
+                else
+                {    
+                    alerta_error(control);
+                }
+            },
+            false
+        );
+
+
+
+        var fcdebt_cancelar = document.getElementById('fcdebt_cancelar');   
+        fcdebt_cancelar.addEventListener('click',
+            function()
+            {           
+                VentanaModalCerrar("subSFCDeb");
+            },
+            false
+        );
+
+
+
+}
 
 
 
 
+function CompraDetalle_modal_basicform (  )
+{
+
+    var fcd_cantidad = document.getElementById('fcd_cantidad');   
+    //fcd_cantidad.value = 0;
+    fcd_cantidad.onblur  = function() {   
+   
+        if (!(validateDecimal(fcd_cantidad.value))){
+            fcd_cantidad.value = 0;
+        }
+        formulaSubTotal();        
+   
+    };     
+    fcd_cantidad.onblur();    
+    fcd_cantidad.focus();
+    fcd_cantidad.select();
+    
 
 
+    var fcd_precio_unitario = document.getElementById('fcd_precio_unitario');   
+    fcd_precio_unitario.onblur  = function() {        
+        fcd_precio_unitario.value  = fmtNum(fcd_precio_unitario.value);   
+        formulaSubTotal();
+    };     
+    fcd_precio_unitario.onblur();    
 
 
-
-
-
+}

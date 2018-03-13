@@ -65,11 +65,20 @@
                 
                 <input 
                     TYPE="hidden"
-                    name="porcentaje"                                                
-                    id="fcd_porcentaje"
+                    name="impuesto_porcentaje"                                                
+                    id="fcd_impuesto_porcentaje"
                     value=""
                         />                
                 
+                
+                
+                
+                <input 
+                    TYPE="hidden"
+                    name="compra_detalle"                                                
+                    id="fcd_compra_detalle"
+                    value="0"
+                        />                
                 
                                
                 

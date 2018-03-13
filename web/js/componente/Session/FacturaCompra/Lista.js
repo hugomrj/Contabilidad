@@ -2,34 +2,39 @@
 
 window.onload = function() {
 
-/*
-alert(localStorage.getItem("nombre_variable"));
-localStorage.removeItem("nombre_variable");
-*/
 
     page = getParametroValor('page'); 
     AjaxPeticion(getRutaAbsoluta()+'/MenuPrincipal','nav');     
     
-    
-    
-        var cliente =  localStorage.getItem("storageCliente");
-        
+        var cliente =  localStorage.getItem("storageCliente");        
         if (isNaN(cliente)){
             cliente = 0;
         }
-        
-//localStorage.setItem("storageCliente",control);           
     
     
     Cabecera_cliente(cliente);
     localStorage.removeItem("storageCliente");
     
-    
-    FacturaVenta_tabla_lista ( );
-    
+    FacturaVenta_tabla_lista( );
     
     
     
+        // darle funcionalidad a buscar
+        var buscar = document.getElementById('buscar');
+        buscar.addEventListener('keyup',
+            function(event) {
+                if(event.keyCode == 13)
+                {
+                    FacturaVenta_tabla_lista ( );
+                }
+            },
+            false
+        );    
+
+
+    
+    
+   
     var nuevo_factura_compra = document.getElementById('nuevo_factura_compra');
     nuevo_factura_compra.addEventListener('click',
         function(event) {                        
@@ -51,10 +56,6 @@ localStorage.removeItem("nombre_variable");
         false
     );    
 
-   
-   
-   
-
 };
 
 window.onresize = function() {
@@ -73,7 +74,7 @@ window.onresize = function() {
 
 
 
-function FacturaVenta_tabla_lista ( ){
+function FacturaVenta_tabla_lista(){
 
             AjaxPeticion(getRutaAbsoluta()+'/FacturaCompra/Coleccion/Lista?buscar='
                 +document.getElementById('buscar').value  
@@ -82,18 +83,20 @@ function FacturaVenta_tabla_lista ( ){
                 ,'tab_body');          
                 
                 
-    /*
+                
             // paginacion                                
             var totalregistros = document.getElementById("facven_tabla").dataset.totalregistros;  
-            AjaxPeticion('../Paginacion?page='+page+"&totalregistros="+totalregistros
+            AjaxPeticion( getRutaAbsoluta()+'/Paginacion?page='+page+"&totalregistros="+totalregistros
                 +""
-                ,'div_paginacion');     
-       */     
-    
-            //paginacionajax ( "FacturaVenta_tabla_lista();"  );    
-            
-            //FacturaVenta_tabla_registro ('facven_tabla' );
-    
+                ,'div_paginacion');                     
+                
+            paginacionajax ( "FacturaVenta_tabla_lista();"  );                       
+           
+           
+           
+            FacturaVenta_tabla_lista_registro("facven_tabla");           
+            FacturaVenta_tabla_lista_formato("facven_tabla");
+        
 }
 
 
@@ -105,8 +108,6 @@ function Cabecera_cliente ( cliente ){
 
         AjaxPeticion( getRutaAbsoluta()+'/Session/Cliente/jspf/cabeceraCliente.jspx'
                 ,'cabecera_cliente');          
-
-
 
           // cargar datos en el caso que existan      
           if (cliente != 0){              
@@ -124,9 +125,6 @@ function Cabecera_cliente ( cliente ){
         };     
         clic_cliente.onblur();
         
-        
-
-
 
         var clic_cliente_buscar = document.getElementById( 'clic_cliente_buscar');
         clic_cliente_buscar.addEventListener('click',
@@ -142,10 +140,6 @@ function Cabecera_cliente ( cliente ){
             false
         );   
 
-
-
-
-
 }
 
 
@@ -153,3 +147,38 @@ function Cabecera_cliente ( cliente ){
 
 
 
+
+
+
+function  FacturaVenta_tabla_lista_formato ( tabla ){
+    
+
+        var table = document.getElementById( tabla ).getElementsByTagName('tbody')[0];
+        var rows = table.getElementsByTagName('tr');
+
+        for (var i=0 ; i < rows.length; i++)
+        {
+            cell = table.rows[i].cells[3] ;                                  
+            cell.innerHTML = fmtNum(cell.innerHTML);            
+        }
+}
+
+
+
+
+function FacturaVenta_tabla_lista_registro( tabla )
+{
+
+
+    var table = document.getElementById( tabla ).getElementsByTagName('tbody')[0];
+    var rows = table.getElementsByTagName('tr');
+
+    for (var i=0 ; i < rows.length; i++)
+    {
+        rows[i].onclick = function()
+        {
+                var linea_id = this.dataset.linea_id;                     
+                // falta editar factura
+        };       
+    }
+};

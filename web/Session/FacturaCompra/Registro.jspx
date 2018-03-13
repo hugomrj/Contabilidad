@@ -19,28 +19,30 @@
             
             <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0" />    
             <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>   
-            <jsp:directive.include file="../WEB-INF/jspf/sessiones.jspf"/>
+            <jsp:directive.include file="../../WEB-INF/jspf/SeguridadSession.jspx"/>
             
  
             <style type="text/css" >            
-                    @import "../css/Basic.css" ;
-                    @import "../css/Esquema.css" ;
-                    @import "../css/Media.css" ;
-                    @import "../css/themes/Red900.css";                    
+                    @import "../../css/Basic.css" ;
+                    @import "../../css/Esquema.css" ;
+                    @import "../../css/Media.css" ;
+                    @import "../../css/themes/DeepOrange400.css";                    
             </style>
 
 
             <script type="text/javascript">        
                 
-                <jsp:include page="../js/ajax/libreria.js" />
-                <jsp:include page="../js/utilidad/funciones.js"/>
-                <jsp:include page="../js/componente/FacturaVenta/Registro.js"/>
-                <jsp:include page="../js/componente/FacturaVenta/form.js"/>
+                <jsp:include page="../../js/ajax/libreria.js" />
+                <jsp:include page="../../js/utilidad/funciones.js"/>
+                <jsp:include page="../../js/componente/Session/FacturaCompra/Registro.js"/>
+                    
+
+
+                    
+                    
                     
             </script>       
 
-                
-                
         </head>
         
         <body>
@@ -63,13 +65,13 @@
                 <section>
                                                        
                     <article>
-                        <h4>Factura de venta</h4>  
+                        <h4>Factura de compras</h4>  
                     </article>
                     
                     
                     <article>
                         
-                            <div id="form_body">
+                            <div id="form_cabecera">
                                 <span></span>
                             </div>                        
                         
@@ -77,67 +79,43 @@
                     
 
                     <article>                        
-                            <div id="tabla_factura_venta_detalle">
+                            <div id="tabla_compra_detalle">
                                 <span></span>
                             </div>                        
                     </article>                            
 
+                    
+
+                    <article class="botones-footer">
+                        <div class="commandbutton">
+                            <a id="cd_agregar_trasanccion" 
+                               class="botonEnlace2" 
+                               href="javascript:void(0);">
+                               agregar</a>
+                        </div>
+                    </article>                    
 
                     
-                            
                     <article class="esp2">
                         <span></span>
                     </article>  
+                                        
                     
                     
-                   <article class = "botones-footer"> 
+                   <article class = "botones-footer">
 
                         <div class ="commandbutton">
                             <a 
                                 href="javascript:void(0);" 
                                 class="botonEnlace"
-                                id="fvr_nuevo"
+                                id="cd_cancelar_trasanccion"
                                 >
-                                Nuevo</a>
-                        </div>                             
-                       
-
-                        <div class ="commandbutton">
-                            <a 
-                                href="javascript:void(0);" 
-                                class="botonEnlace"
-                                id="fvr_eliminar"
-                                >
-                                Eliminar</a>
-                        </div>                             
-
-
-
-                       
-                        <div class ="commandbutton">
-                            <a 
-                                href="javascript:void(0);" 
-                                class="botonEnlace"
-                                id="fvr_listar"
-                                >
-                                Listar</a>
-                        </div>                             
-
-                       
-                                             
-                       
-                        <div class ="commandbutton">
-                            <a 
-                                href="javascript:void(0);" 
-                                class="botonEnlace"
-                                id="fvr_reporte"
-                                >
-                                Reporte</a>
-                        </div>                            
+                                Cancelar</a>
+                        </div>                                                    
                        
                        
                        
-                   </article>                             
+                   </article>                        
                     
                     
                 </section>

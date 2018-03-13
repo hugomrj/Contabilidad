@@ -6,23 +6,14 @@ window.onload = function() {
     AjaxPeticion(getRutaAbsoluta()+'/MenuPrincipal','nav');   
     
     CabeceraFC(cliente);
-    
-    
-/*    
-    document.getElementById("tabla_compra_detalle").innerHTML 
-        =  AjaxUrl( getRutaAbsoluta()+'/FacturaCompraDetalle/Transaccion/Lista');    
-   */
-  
     FacturaCompraDetalle_tabla("tabla_compra_detalle");
-    
+    FacturaVentaDetalle_form_formato ();   
     
     
     var cd_agregar_trasanccion = document.getElementById('cd_agregar_trasanccion');
     cd_agregar_trasanccion.addEventListener('click',
-        function(event) {
-            
+        function(event) {            
             CompraDetalle_modal_agregar( );        
-            
         },
         false
     );    
@@ -45,18 +36,11 @@ window.onload = function() {
                     if (document.getElementById("opt_CR").checked ){
                         dataform = dataform + "&forma_pago=CR"
                     }
-                    
-                    
-                    
-                    
+                                        
                     var form = document.getElementById("form_cabecera");                                
                     var accion =  getRutaAbsoluta()
                             +"/FacturaCompra/Transaccion/Fin"; 
 
-/*
-                    var postPie = getPost( "vdtl_", ["gravada0", "gravada5", "gravada10",
-                                                                    "iva5", "iva10", "monto_total"] );
-*/
 
                     var control = AjaxPeticionURL( accion, getDataForm(form) + dataform );                
 
@@ -75,6 +59,23 @@ window.onload = function() {
     );    
 
     
+
+    var cd_cancelar_trasanccion = document.getElementById('cd_cancelar_trasanccion');
+    cd_cancelar_trasanccion.addEventListener('click',
+        function(event) {
+            
+               AjaxUrl(getRutaAbsoluta()+'/FacturaCompra/Transaccion/Cancelar');   
+               
+               localStorage.setItem("storageCliente", document.getElementById('clic_cliente').value);                                                     
+               window.location = getRutaAbsoluta()+"/Session/FacturaCompra/Lista.jspx";                
+               
+            
+            },
+            false
+            
+        );
+
+
 
 
 };
@@ -97,6 +98,38 @@ window.onresize = function() {
 
 function fcompra_nuevo_validar_form ( ){
     
+    //numero_factura
+    var numero_factura = document.getElementById('numero_factura');    
+    if (numero_factura .value <= 0 )     
+    {
+        alerta_error("Falta numero factura");
+        numero_factura.focus();
+        numero_factura.select();        
+        return false;
+    }    
+    
+    
+    var facvenf_fecha_factura = document.getElementById('facvenf_fecha_factura');    
+    if (facvenf_fecha_factura.value == '') {
+        alerta_error("La fecha no puede estar vacia");
+        facvenf_fecha_factura.focus();
+        return false;
+    }        
+    
+    
+    
+    var emisor_descripcion = document.getElementById('emisor_descripcion');   
+    if (emisor_descripcion.value.toString().trim() == '' )     
+    {
+        alerta_error("Falta descripcion de emisor");
+        emisor_descripcion.focus();
+        emisor_descripcion.select();        
+        return false;
+    }    
+        
+    
+    
+    
     
     // falta saber si existe registro
     var size = AjaxUrl( getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Size" );  
@@ -104,32 +137,6 @@ function fcompra_nuevo_validar_form ( ){
         alerta_error("Sin detalles de compras");
         return;
     }
-    
-    
-/*    
-    
-    var orden = document.getElementById('facvenf_orden_trabajo').value;
-    orden = orden.replace(/,/g, "");
-
-    var existeorden =  AjaxUrl('../OrdenTrabajo/Consulta/Existe?orden='+orden); 
-    if (existeorden.toString().trim() == "0"){
-        alerta_error("No exite orden de trabajo");
-        document.getElementById('facvenf_orden_trabajo').focus();
-        document.getElementById('facvenf_orden_trabajo').select();
-        return false;
-    }
-
-
-
-    // controlar las cuadriculas estas cargadas
-    var detalle_count = 0;    
-    detalle_count = AjaxUrl('../OrdenTrabajoDetalle/Transaccion/Count');    
-    if ( parseInt(detalle_count) == 0 ) 
-    {
-        alerta_error("Faltan valores del pedido");
-        return false;
-    }
-*/ 
     
     
     
@@ -173,15 +180,16 @@ function CabeceraFC (cliente ){
         document.getElementById('clic_cliente').value = 0;
         document.getElementById('cliente_descripcion').value = "";
     }
+    
+    var numero_factura = document.getElementById('numero_factura');   
+    numero_factura.onblur  = function() {        
+        numero_factura.value  = fmtNum(numero_factura.value);   
+    };     
+    numero_factura.onblur();        
+    
+    
 
 }
-
-
-
-
-
-
-
 
 
 
