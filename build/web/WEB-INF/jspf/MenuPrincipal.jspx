@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jsp:root version="2.0"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    
+    <c:set var="homepath" value="${pageContext.request.contextPath}" />
+    
+    
+    
+    
+    <ul id="menu">    
+    
+    <li>
+        <a href= "${homepath}/Menu/Indice.jspx" >        
+            <descripcion>Inicio</descripcion>
+        </a>
+    </li>       
+
+       
+    <c:forEach items="${SessionModulos}" var ="modulos" >
+            <modulo  id="${modulos.modulo}">
+                <li>
+                    
+                    <c:url value="/Menu/Mostrar.jspx" var="moduloUrl">  
+                        <c:param name="modulo" value="${modulos.modulo}" />    
+                    </c:url>  
+                    
+                    <a href="${moduloUrl}">
+                        <descripcion>${modulos.descripcion}</descripcion>
+                    </a>              
+                    
+                </li>
+            </modulo>                                           
+    </c:forEach>    
+    
+    
+        <li style="float: right;">
+            <a href= "${homepath}/Usuario/Logoff.do" >
+                <descripcion>Salir</descripcion>
+            </a>
+        </li>
+
+    
+</ul>
+        
+  
+    
+    
+    
+    
+    
+
+</jsp:root>

@@ -1,0 +1,122 @@
+
+
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+            
+    
+            <div class="tabular">  
+
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="interaccion">Interaccion:</label> 
+                            
+                            <input 
+                                    TYPE="TEXT"
+                                    name="interaccion"                                                
+                                    id="interf_interaccion"
+                                    value="0"
+                                    class="t5n"
+                                    disabled="disabled"    
+                                    />
+                        </div>
+                    </div>  
+                </div>  
+
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="nombre">Nombre:</label>                             
+                            <input 
+                                    TYPE="TEXT"
+                                    name="nombre"                                                
+                                    id="interf_nombre"                                    
+                                    class="t30"                                    
+                                    />
+                        </div>
+                    </div>  
+                </div>  
+
+                
+            <div class="fila">
+                <div class="col">
+                    <div class="campo">
+                       
+                        
+                            <label for="modulo">Modulo:</label> 
+                            
+                            <input TYPE="TEXT" 
+                                   id ="interf_modulo"
+                                   name="modulo" 
+                                   size ="10"
+                                   class = "FKt5n"
+                                   />      
+                                
+                                   <a 
+                                        href="javascript:void(0);" 
+                                        class="boton_svg"
+                                        id="interf_modulo_buscar"
+                                        >
+                                       <img src="../../svg/more.svg" width="24"/>                            
+                                    </a>                            
+
+
+                                     
+                            <output       
+                                    class="t30"
+                                    id="modulo_descripcion">         
+                            </output>                                
+                            
+                        
+                    </div>
+                </div>  
+            </div>                                 
+                
+         
+                
+
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="url">Url:</label>                             
+                            <input 
+                                    TYPE="TEXT"
+                                    name="url"                                                
+                                    id="interf_url"                                    
+                                    class="t30"
+                                    
+                                    />
+                        </div>
+                    </div>  
+                </div>  
+                
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="orden">Orden:</label> 
+                            
+                            <input 
+                                    TYPE="TEXT"
+                                    name="orden"                                                
+                                    id="interf_orden"
+                                    value="0"
+                                    class="t5n"                                    
+                                    />
+                        </div>
+                    </div>  
+                </div>                  
+
+
+            </div>
+    
+</jsp:root>
+                
+
+

@@ -1,0 +1,59 @@
+
+
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+       
+    
+     <article> 
+    
+        <form
+                action="#" 
+                method="post" 
+                id="fcdebt_form" 
+                name='fcdebt_form'
+            >
+            
+            <jsp:include page="basicform.jspx" flush="true"/>
+
+        </form>  
+    
+    </article>      
+    
+
+    <article class = "botones-footer">
+
+        <div class ="commandbutton">
+            <a href="javascript:void(0);" 
+               id ="fcdebt_Editar"
+               class="botonEnlace" >Editar</a>
+        </div>                                
+
+
+        <div class ="commandbutton">
+            <a href="javascript:void(0);" 
+               id ="fcdebt_Borrar"
+               class="botonEnlace" >Borrar</a>
+        </div>                                
+
+        <div class ="commandbutton">
+            <a href="javascript:void(0);" 
+               id ="fcdebt_cancelar"
+               class="botonEnlace" >Cancelar</a>
+        </div>                                
+
+                
+
+    </article>        
+
+    
+    
+    
+    
+</jsp:root>
+                
+
+

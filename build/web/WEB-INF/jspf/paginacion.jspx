@@ -1,0 +1,114 @@
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+
+    
+    <c:set var="pagina" scope="page" value="${pagina}"/>    
+    <c:set var="paginaFin" scope="page" value="${paginaFin}"/> 
+    <c:set var="paginaInicio" scope="page" value="${paginaInicio}"/> 
+    <c:set var="cantidadPaginas" scope="page" value="${cantidadPaginas}"/> 
+    <c:set var="totalRegistros" scope="page" value="${totalRegistros}"/> 
+    
+    
+    <c:set var="vinculo" scope="page" value="${vinculo}"/>    
+    
+        
+    
+    <ul id="pagination"
+        class="pagination"
+        data-paginaactual="${pagina}"
+        >
+
+                <c:choose>
+                    <c:when test="${pagina != paginaFin}">                                    
+  
+                        <li
+                            data-pagina="sig"
+                            >
+                            <a href="javascript:void(0);"
+                               id ="sig">
+                                Siguiente
+                            </a>
+                        </li>    
+                        
+                    </c:when>   
+                </c:choose>                                                   
+        
+
+                <c:forEach var = "i" begin = "${paginaInicio}" end = "${paginaFin}">
+                    <c:choose>
+                        <c:when test="${pagina == i}">                                    
+
+                        <li class="active"
+                            data-pagina="act">
+                            ${i}
+                        </li>
+
+                        </c:when>   
+                        
+                        <c:otherwise>
+                          
+                            <li
+                                data-pagina="pag${i}"                                
+                                >
+                                <a href="javascript:void(0);"
+                                   id ="pag${i}">
+                                    ${i}
+                                </a>
+                            </li>                            
+                            
+                        </c:otherwise>                        
+                        
+                    </c:choose>                                                                       
+                        
+                </c:forEach>    
+                        
+                            
+                <c:choose>
+                    <c:when test="${pagina != paginaInicio}">                                    
+  
+                        <li
+                            data-pagina="ant"
+                            >
+                            <a href="javascript:void(0);"
+                               id ="ant">
+                                Anterior
+                            </a>
+                        </li>    
+                        
+                    </c:when>   
+                </c:choose>                                
+
+  
+
+
+
+<li class="active" style="background: transparent; border-color: transparent; opacity:0.6;"
+    data-pagina="det"
+    >
+
+
+Paginas ${pagina} de ${cantidadPaginas} 
+Registros ${totalRegistros}
+
+</li>
+
+
+
+        
+        
+        
+    </ul> 
+    
+    
+
+    
+<br/>
+          
+    
+</jsp:root>
+                
+
+
