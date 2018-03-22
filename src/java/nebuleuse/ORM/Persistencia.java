@@ -788,6 +788,25 @@ public class Persistencia {
         
     }
 
+
+
+    public Object extraerRegistro ( Map<String, Object> map, Object objeto) throws Exception {
+        
+        Object instanciaObjeto = null;
+        HashMap registro = new HashMap();
+        RegistroMap registoMap = new RegistroMap();
+        registro = registoMap.convertirHashMap(map);           
+        instanciaObjeto = extraerObjeto(registro,objeto);    
+        return instanciaObjeto;          
+        
+    }
+
+        
+    
+    
+    
+    
+    
     
     public Object extraerObjeto ( HashMap parametro_registro, Object objeto) 
      {

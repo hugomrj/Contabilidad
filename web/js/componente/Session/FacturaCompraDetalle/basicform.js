@@ -36,7 +36,8 @@ function CompraDetalle_modal_agregar (  )
                 if (!(isNaN(control)))
                 {         
                     FacturaCompraDetalle_tabla("tabla_compra_detalle");
-                    FacturaVentaDetalle_form_formato();                       
+                    FacturaCompraDetalle_table_formato();                       
+                    //FacturaCompraDetalle_form_formato();                       
                     fcdat_cerrar.click();                    
                 }
                 else
@@ -160,7 +161,11 @@ function formulaSubTotal (  ){
 
 
 
-function CompraDetalle_modal_EditarBorrar ( id )
+
+
+
+
+function CompraDetalle_modal_EditarBorrar (  id_transaccion )
 {
         
     VentanaModal("subSFCDeb",  
@@ -168,7 +173,7 @@ function CompraDetalle_modal_EditarBorrar ( id )
                 
         // falta un json de transaccion
                 
-        var path = getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Linea.json?id=" + id
+        var path = getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Linea.json?id=" + id_transaccion
         var jsonResponse = AjaxUrl( path );    
 
         if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )           
@@ -208,13 +213,13 @@ function CompraDetalle_modal_EditarBorrar ( id )
                 if (CompraDetalle_transaccion_validacion()){
                     verificacion_porcentaje();                                  
                     var form = document.getElementById("fcdebt_form");                            
-                    var accion =  getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Editar?id="+id; 
+                    var accion =  getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Editar?id="+id_transaccion; 
                
                     var control = AjaxPeticionURL( accion, getDataForm(form) );                   
                     if (!(isNaN(control)))
                     {         
                         FacturaCompraDetalle_tabla("tabla_compra_detalle");
-                        FacturaVentaDetalle_form_formato();                       
+                        FacturaCompraDetalle_table_formato();                       
                         fcdebt_cancelar.click();                    
                     }
                     else
@@ -234,13 +239,13 @@ function CompraDetalle_modal_EditarBorrar ( id )
             {                                        
 
                 var form = document.getElementById("fcdebt_form");     
-                var accion =  getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Borrar?id="+id;                
+                var accion =  getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Borrar?id="+id_transaccion;                
                 var control = AjaxPeticionURL( accion, getDataForm(form) );                
 
                 if (!(isNaN(control)))
                 {                       
                         FacturaCompraDetalle_tabla("tabla_compra_detalle");
-                        FacturaVentaDetalle_form_formato();                       
+                        FacturaCompraDetalle_table_formato();                       
                         fcdebt_cancelar.click();      
                 }
                 else
@@ -262,6 +267,61 @@ function CompraDetalle_modal_EditarBorrar ( id )
             false
         );
 
+}
+
+
+
+
+
+function CompraDetalle_modal_Consulta ( id )
+{
+        
+    VentanaModal("subSFCDc",  
+        getRutaAbsoluta()+'/Session/FacturaCompraDetalle/jspf/consultaRegistro.jspx', 800 );    
+                                
+        // json 
+        
+        var path = getRutaAbsoluta()+"/FacturaCompraDetalle/Linea.json?id=" + id
+        var jsonResponse = AjaxUrl( path );    
+
+        if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )           
+        {  
+            var json = JSON.parse(jsonResponse); 
+            
+            document.getElementById('fcd_compra_detalle').value = VJson( json, "compra_detalle", "N");       
+            
+            document.getElementById('fcd_cantidad').value = VJson( json, "cantidad", "N");       
+            document.getElementById('fcd_descripcion').value = VJson( json, "descripcion");       
+            document.getElementById('fcd_precio_unitario').value = VJson( json, "precio_unitario","N");  
+            
+            var fcd_impuesto_porcentaje = document.getElementById('fcd_impuesto_porcentaje');
+            fcd_impuesto_porcentaje.value = VJson( json, "impuesto_porcentaje","N");       
+
+            if (fcd_impuesto_porcentaje.value == 10){
+                document.getElementById("fcd_impuesto_selector").selectedIndex = 0;                
+            }                      
+            if (fcd_impuesto_porcentaje.value == 5){
+                document.getElementById("fcd_impuesto_selector").selectedIndex = 1;                
+            }      
+            if (fcd_impuesto_porcentaje.value == 0){
+                document.getElementById("fcd_impuesto_selector").selectedIndex = 2;                
+            }      
+            document.getElementById('fcd_sub_total').value = VJson( json, "sub_total","N");  
+
+        }
+
+        //CompraDetalle_modal_basicform();
+
+
+
+        var fcdr_cerrar = document.getElementById('fcdr_cerrar');   
+        fcdr_cerrar.addEventListener('click',
+            function()
+            {           
+                VentanaModalCerrar("subSFCDc");
+            },
+            false
+        );
 
 
 }
@@ -296,4 +356,32 @@ function CompraDetalle_modal_basicform (  )
     fcd_precio_unitario.onblur();    
 
 
+}
+
+
+
+
+function FacturaCompraDetalle_form_disabled (){
+    
+    document.getElementById( 'fcd_cantidad').disabled = true;
+    document.getElementById( 'fcd_descripcion').disabled = true;
+    document.getElementById( 'fcd_precio_unitario').disabled = true;
+    document.getElementById( 'fcd_impuesto_selector').disabled = true;
+    
+}
+
+
+function FacturaCompraDetalle_form_formato (){
+    
+    
+    var fcd_precio_unitario = document.getElementById('fcd_precio_unitario');   
+    fcd_precio_unitario.value  = fmtNum(fcd_precio_unitario.value);   
+    
+    
+    var fcd_sub_total = document.getElementById('fcd_sub_total');   
+    fcd_sub_total.value  = fmtNum(fcd_sub_total.value);   
+    
+    
+    
+    
 }

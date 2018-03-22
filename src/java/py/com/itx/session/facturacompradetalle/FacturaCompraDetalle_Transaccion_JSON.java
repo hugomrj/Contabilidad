@@ -15,9 +15,7 @@ package py.com.itx.session.facturacompradetalle;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -25,9 +23,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import nebuleuse.ORM.Secuencia;
-import nebuleuse.util.Lista;
-import py.com.itx.sistema.usuario.UsuarioSeguridadBean;
 
 
 
@@ -46,6 +41,8 @@ public class FacturaCompraDetalle_Transaccion_JSON extends HttpServlet {
         response.setCharacterEncoding("UTF-8");        
         
         PrintWriter out = response.getWriter();          
+        
+        
         
         /*
         // controlusuario
@@ -73,7 +70,10 @@ public class FacturaCompraDetalle_Transaccion_JSON extends HttpServlet {
 
                 FacturaCompraDetalle instancia =  new FacturaCompraDetalle();
 
-                instancia = transaccion.getCompraDetalle( codigo );
+                //instancia = transaccion.getCompraDetalle( codigo );
+                instancia = transaccion.getCompraDetalleTransaccion( codigo );
+                
+                               
 
                 Gson gson = new Gson ();                
                 String formatoJSON = gson.toJson( instancia );                

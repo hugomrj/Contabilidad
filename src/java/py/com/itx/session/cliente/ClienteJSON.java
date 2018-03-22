@@ -40,34 +40,28 @@ public class ClienteJSON extends HttpServlet {
         
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
-                
+                        
         PrintWriter out = response.getWriter();          
 
         if (!( new UsuarioSeguridadBean().isAccesoServlet(request))) {   
             out.println("error403");  
             return;
         }
-
- 
         
         try 
-        {
-            
+        {            
             //controlar si existe contador 
             Contador contador = new Contador();
             contador = new ContadorDAO().getContador(request);            
 
             
             if ( ( request.getParameter("id") != null)  && (contador != null))
-            {
-                
+            {                
                 Integer codigo = Integer.parseInt(request.getParameter("id")) ;                       
                 
                 Cliente instancia = new Cliente();               
                 Persistencia persistencia = new Persistencia();
                 instancia = (Cliente) persistencia.filtrarId(instancia, codigo);
-
 
                 // controlar si contador es igual al codigo de session       
                 if (instancia.getContador() != null){
@@ -80,12 +74,9 @@ public class ClienteJSON extends HttpServlet {
                     return;
                 }
 
-                
-
                 Gson gson = new Gson ();                
                 String formatoJSON = gson.toJson( instancia );
-                
-                
+                                
                 if (formatoJSON.trim().endsWith("null") ) {
                     formatoJSON = "[]";
                 }

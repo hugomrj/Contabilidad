@@ -5,6 +5,8 @@
  */
 package py.com.itx.session.facturacompradetalle;
 
+import py.com.itx.session.facturacompra.FacturaCompra;
+
 
 
 
@@ -18,7 +20,7 @@ package py.com.itx.session.facturacompradetalle;
 public class FacturaCompraDetalle {
     
     private Integer compra_detalle;    
-    private Integer factura;
+    private FacturaCompra factura;
     private String descripcion;
     private Float  cantidad;
     private Long precio_unitario;
@@ -79,13 +81,6 @@ public class FacturaCompraDetalle {
         this.impuesto10 = impuesto10;
     }
 
-    public Integer getFactura() {
-        return factura;
-    }
-
-    public void setFactura(Integer factura) {
-        this.factura = factura;
-    }
 
     public Long getSub_total() {
         return sub_total;
@@ -109,6 +104,14 @@ public class FacturaCompraDetalle {
 
     public void setImpuesto_porcentaje(Integer impuesto_porcentaje) {
         this.impuesto_porcentaje = impuesto_porcentaje;
+    }
+
+    public FacturaCompra getFactura() {
+        return factura;
+    }
+
+    public void setFactura(FacturaCompra factura) {
+        this.factura = factura;
     }
     
     

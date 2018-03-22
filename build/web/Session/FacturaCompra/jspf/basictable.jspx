@@ -8,12 +8,9 @@
     
         
         <table class="tableA"
-               id="facven_tabla"
+               id="faccom_tabla"
                data-totalregistros="${totalRegistros}"
                >
-            
-            
-  
             
                 <thead>
                     <tr>

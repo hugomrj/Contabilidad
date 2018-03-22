@@ -51,7 +51,7 @@ public String  Lista ( Integer cliente, Integer contador,  String buscar)
             "\n" 
             + condicionBusqueda +
             "	  \n" +
-            "	order by factura desc" +
+            "	order by fecha_factura desc" +
             "" ;
 
 

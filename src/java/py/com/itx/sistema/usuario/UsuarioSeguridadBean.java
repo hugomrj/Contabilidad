@@ -8,9 +8,7 @@ package py.com.itx.sistema.usuario;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import py.com.itx.sistema.recurso.Recurso;
 
@@ -89,24 +87,21 @@ public class UsuarioSeguridadBean {
     
     
     
-    
+    /*
     public String getRecorrer() {
 
         System.out.println("----");
         for (Recurso recu: recursos) {                                                   
                 System.out.println(recu.getUrl());
-        }        
-        
+        }                
         return "";
 
     } 
+    */
     
     
-    
-    public void setRecursosSession(HttpServletRequest request ) {
-      
-        request.getSession().setAttribute("SessionRecursos", recursos);     
-        
+    public void setRecursosSession(HttpServletRequest request ) {      
+        request.getSession().setAttribute("SessionRecursos", recursos);             
     }    
     
     

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import py.com.itx.session.facturacompradetalle.FacturaCompraDetalle;
 import py.com.itx.session.facturacompradetalle.FacturaCompraDetalle_Transaccion;
+import py.com.itx.sistema.usuario.UsuarioSeguridadBean;
 
 
 @WebServlet(name = "FacturaCompra_Transaccion_Inicio",
@@ -33,31 +34,22 @@ public class FacturaCompra_Transaccion_Inicio extends HttpServlet {
             throws ServletException, IOException, Exception {
                
                 
+            // controlusuario
+            if (!( new UsuarioSeguridadBean().isAccesoServlet(request))) {   
+                request.getRequestDispatcher("/error403.jspx").include(request, response);                
+                return;
+            }                 
+        
+        
         try 
-        {
-                    
+        {                    
                 FacturaCompraDetalle_Transaccion transaccion = new FacturaCompraDetalle_Transaccion();
             
                 request.getSession().setAttribute( 
                         transaccion.getNombre(), 
                         transaccion.getListaObjeto()
                 );
-
-                
-                Integer cliente = 0;             
-                if (request.getParameter("cliente") != null){
-                    cliente = Integer.parseInt( request.getParameter("cliente") );
-                }
-
-                if (cliente == 0){
-                    response.sendRedirect("../../Session/FacturaCompra/Nuevo.jspx");  
-                }
-                else{
-                    response.sendRedirect("../../Session/FacturaCompra/Nuevo.jspx?cliente="+cliente);  
-                }
-                
-                
-                
+       
         
         }
         catch (Exception ex) 

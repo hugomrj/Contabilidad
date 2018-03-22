@@ -62,7 +62,7 @@ public class FacturaCompraDetalle_Transaccion_Borrar extends HttpServlet {
             
             transaccion.getListaObjeto().remove(Integer.parseInt(id));
             
-            transaccion.Indexar();                       
+         
             request.getSession().setAttribute( 
                     transaccion.getNombre(), 
                     transaccion.getListaObjeto()

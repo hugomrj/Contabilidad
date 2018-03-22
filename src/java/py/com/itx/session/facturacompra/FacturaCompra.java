@@ -19,7 +19,7 @@ import py.com.itx.session.cliente.Cliente;
 public class FacturaCompra {
     
     private Integer factura;
-    private Long numero_factura;
+    private String numero_factura;
     private Date fecha_factura;
     private String emisor_descripcion;
     private Cliente cliente ;
@@ -35,14 +35,6 @@ public class FacturaCompra {
     private Contador contador;
 
 
-
-    public Long getNumero_factura() {
-        return numero_factura;
-    }
-
-    public void setNumero_factura(Long numero_factura) {
-        this.numero_factura = numero_factura;
-    }
 
     public Date getFecha_factura() {
         return fecha_factura;
@@ -154,6 +146,14 @@ public class FacturaCompra {
 
     public void setFactura(Integer factura) {
         this.factura = factura;
+    }
+
+    public String getNumero_factura() {
+        return numero_factura;
+    }
+
+    public void setNumero_factura(String numero_factura) {
+        this.numero_factura = numero_factura;
     }
     
     

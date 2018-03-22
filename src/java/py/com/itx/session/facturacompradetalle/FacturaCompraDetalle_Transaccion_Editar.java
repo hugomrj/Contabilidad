@@ -92,7 +92,9 @@ public class FacturaCompraDetalle_Transaccion_Editar extends HttpServlet {
             transaccion.getListaObjeto().set(id, instancia);
            
                         
-            transaccion.Indexar();                       
+            //transaccion.Indexar();                   
+            
+            
             request.getSession().setAttribute( 
                     transaccion.getNombre(), 
                     transaccion.getListaObjeto()

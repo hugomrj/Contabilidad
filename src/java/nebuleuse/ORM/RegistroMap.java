@@ -68,6 +68,35 @@ public class RegistroMap {
         
         return linea;
     }    
+
+
+
+    public HashMap convertirHashMap (Map<String, Object> map) throws SQLException{        
+        
+        linea.clear();   
+        
+        for (Map.Entry<String, Object> entry : map.entrySet() ) {
+            String key = entry.getKey();
+            Object value = entry.getValue();            
+            linea.put(key, value.toString());
+            //System.out.println(key);                    System.out.println(value);
+        }        
+        
+        
+        
+
+
+
+        
+        
+        
+        return linea;
+    }    
+    
+    
+    
+    
+    
     
     
     

@@ -594,6 +594,49 @@ function validaFechaDDMMAAAA(fecha){
 
 
 
+    function getJson(i, json, etiqueta, type)
+    {
+        var e = etiqueta;                
+        var v = json[i][e];
+        
+        if (type === undefined || type === null) {
+             type = "C";
+        }                
+        
+        if (v === undefined || v === null) {            
+            switch (type)
+            {
+               case "C": 
+                   return  "";
+                   break;
+               case "N": 
+                   return  0;
+                   break;                   
+               case "D": 
+                   return  "";
+                   break;
+               default:  
+                    return  "";
+            }                            
+        }
+        else{
+            
+            switch (type)
+            {               
+               case "D": 
+                   return  JSONtoYMD(v);
+                   break;                   
+                   
+               default:  
+                    return   v.toString().trim();
+            }                 
+            
+            
+        }
+    }    
+
+
+
 
 
     function fechaActual()

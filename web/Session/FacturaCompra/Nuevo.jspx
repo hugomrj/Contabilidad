@@ -35,8 +35,12 @@
                 <jsp:include page="../../js/ajax/libreria.js" />
                 <jsp:include page="../../js/utilidad/funciones.js"/>
                 <jsp:include page="../../js/componente/Session/FacturaCompra/Nuevo.js"/>
+                    
+                <jsp:include page="../../js/componente/Session/FacturaCompra/cabeceraFC.js"/>                    
+                    
                 <jsp:include page="../../js/componente/Session/FacturaCompraDetalle/basicform.js"/>
                 <jsp:include page="../../js/componente/Session/FacturaCompraDetalle/basictable.js"/>
+
 
                     
                     

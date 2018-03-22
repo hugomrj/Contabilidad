@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.4
 -- Dumped by pg_dump version 9.5.4
 
--- Started on 2018-03-13 13:50:49
+-- Started on 2018-03-22 12:25:34
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -44,7 +44,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2297 (class 0 OID 0)
+-- TOC entry 2300 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -165,7 +165,7 @@ CREATE SEQUENCE interacciones_interaccion_seq
 ALTER TABLE interacciones_interaccion_seq OWNER TO postgres;
 
 --
--- TOC entry 2298 (class 0 OID 0)
+-- TOC entry 2301 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: interacciones_interaccion_seq; Type: SEQUENCE OWNED BY; Schema: administracion; Owner: postgres
 --
@@ -229,7 +229,7 @@ CREATE SEQUENCE recursos_recurso_seq
 ALTER TABLE recursos_recurso_seq OWNER TO postgres;
 
 --
--- TOC entry 2299 (class 0 OID 0)
+-- TOC entry 2302 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: recursos_recurso_seq; Type: SEQUENCE OWNED BY; Schema: administracion; Owner: postgres
 --
@@ -253,7 +253,7 @@ CREATE SEQUENCE recursos_x_roles_id_seq
 ALTER TABLE recursos_x_roles_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2300 (class 0 OID 0)
+-- TOC entry 2303 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: recursos_x_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: administracion; Owner: postgres
 --
@@ -290,7 +290,7 @@ CREATE SEQUENCE roles_rol_seq
 ALTER TABLE roles_rol_seq OWNER TO postgres;
 
 --
--- TOC entry 2301 (class 0 OID 0)
+-- TOC entry 2304 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: roles_rol_seq; Type: SEQUENCE OWNED BY; Schema: administracion; Owner: postgres
 --
@@ -328,7 +328,7 @@ CREATE SEQUENCE roles_x_interacciones_id_seq
 ALTER TABLE roles_x_interacciones_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2302 (class 0 OID 0)
+-- TOC entry 2305 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: roles_x_interacciones_id_seq; Type: SEQUENCE OWNED BY; Schema: administracion; Owner: postgres
 --
@@ -366,7 +366,7 @@ CREATE SEQUENCE usuarios_usuario_seq
 ALTER TABLE usuarios_usuario_seq OWNER TO postgres;
 
 --
--- TOC entry 2303 (class 0 OID 0)
+-- TOC entry 2306 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: usuarios_usuario_seq; Type: SEQUENCE OWNED BY; Schema: administracion; Owner: postgres
 --
@@ -404,7 +404,7 @@ CREATE SEQUENCE usuarios_x_roles_id_seq
 ALTER TABLE usuarios_x_roles_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2304 (class 0 OID 0)
+-- TOC entry 2307 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: usuarios_x_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: administracion; Owner: postgres
 --
@@ -452,7 +452,7 @@ CREATE SEQUENCE clientes_cliente_seq
 ALTER TABLE clientes_cliente_seq OWNER TO postgres;
 
 --
--- TOC entry 2305 (class 0 OID 0)
+-- TOC entry 2308 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: clientes_cliente_seq; Type: SEQUENCE OWNED BY; Schema: aplicacion; Owner: postgres
 --
@@ -492,7 +492,7 @@ CREATE SEQUENCE contadores_contador_seq
 ALTER TABLE contadores_contador_seq OWNER TO postgres;
 
 --
--- TOC entry 2306 (class 0 OID 0)
+-- TOC entry 2309 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: contadores_contador_seq; Type: SEQUENCE OWNED BY; Schema: aplicacion; Owner: postgres
 --
@@ -501,13 +501,12 @@ ALTER SEQUENCE contadores_contador_seq OWNED BY contadores.contador;
 
 
 --
--- TOC entry 207 (class 1259 OID 97042)
+-- TOC entry 203 (class 1259 OID 97042)
 -- Name: factura_compras; Type: TABLE; Schema: aplicacion; Owner: postgres
 --
 
 CREATE TABLE factura_compras (
     factura integer NOT NULL,
-    numero_factura bigint,
     fecha_factura date DEFAULT now(),
     emisor_descripcion character varying(100),
     cliente integer,
@@ -520,14 +519,15 @@ CREATE TABLE factura_compras (
     usuario integer,
     forma_pago character varying(2),
     total_iva bigint DEFAULT 0,
-    contador integer
+    contador integer,
+    numero_factura character varying
 );
 
 
 ALTER TABLE factura_compras OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 97056)
+-- TOC entry 205 (class 1259 OID 97056)
 -- Name: factura_compras_detalle; Type: TABLE; Schema: aplicacion; Owner: postgres
 --
 
@@ -548,7 +548,7 @@ CREATE TABLE factura_compras_detalle (
 ALTER TABLE factura_compras_detalle OWNER TO postgres;
 
 --
--- TOC entry 208 (class 1259 OID 97054)
+-- TOC entry 204 (class 1259 OID 97054)
 -- Name: factura_compras_detalle_factura_detalle_seq; Type: SEQUENCE; Schema: aplicacion; Owner: postgres
 --
 
@@ -563,8 +563,8 @@ CREATE SEQUENCE factura_compras_detalle_factura_detalle_seq
 ALTER TABLE factura_compras_detalle_factura_detalle_seq OWNER TO postgres;
 
 --
--- TOC entry 2307 (class 0 OID 0)
--- Dependencies: 208
+-- TOC entry 2310 (class 0 OID 0)
+-- Dependencies: 204
 -- Name: factura_compras_detalle_factura_detalle_seq; Type: SEQUENCE OWNED BY; Schema: aplicacion; Owner: postgres
 --
 
@@ -572,7 +572,7 @@ ALTER SEQUENCE factura_compras_detalle_factura_detalle_seq OWNED BY factura_comp
 
 
 --
--- TOC entry 206 (class 1259 OID 97040)
+-- TOC entry 202 (class 1259 OID 97040)
 -- Name: factura_compras_factura_seq; Type: SEQUENCE; Schema: aplicacion; Owner: postgres
 --
 
@@ -587,8 +587,8 @@ CREATE SEQUENCE factura_compras_factura_seq
 ALTER TABLE factura_compras_factura_seq OWNER TO postgres;
 
 --
--- TOC entry 2308 (class 0 OID 0)
--- Dependencies: 206
+-- TOC entry 2311 (class 0 OID 0)
+-- Dependencies: 202
 -- Name: factura_compras_factura_seq; Type: SEQUENCE OWNED BY; Schema: aplicacion; Owner: postgres
 --
 
@@ -596,15 +596,16 @@ ALTER SEQUENCE factura_compras_factura_seq OWNED BY factura_compras.factura;
 
 
 --
--- TOC entry 203 (class 1259 OID 96999)
+-- TOC entry 207 (class 1259 OID 97090)
 -- Name: factura_ventas; Type: TABLE; Schema: aplicacion; Owner: postgres
 --
 
 CREATE TABLE factura_ventas (
     factura integer NOT NULL,
-    numero_factura bigint,
+    numero_factura character varying,
     fecha_factura date DEFAULT now(),
     cliente integer,
+    emisor_descripcion character varying(100),
     gravada0 bigint DEFAULT 0,
     gravada5 bigint DEFAULT 0,
     gravada10 bigint DEFAULT 0,
@@ -613,41 +614,40 @@ CREATE TABLE factura_ventas (
     monto_total bigint DEFAULT 0,
     usuario integer,
     forma_pago character varying(2),
-    orden_trabajo integer,
-    total_iva bigint DEFAULT 0
+    total_iva bigint DEFAULT 0,
+    contador integer
 );
 
 
 ALTER TABLE factura_ventas OWNER TO postgres;
 
 --
--- TOC entry 205 (class 1259 OID 97015)
+-- TOC entry 209 (class 1259 OID 97107)
 -- Name: factura_ventas_detalle; Type: TABLE; Schema: aplicacion; Owner: postgres
 --
 
 CREATE TABLE factura_ventas_detalle (
-    factura_detalle integer NOT NULL,
+    venta_detalle integer NOT NULL,
     factura bigint DEFAULT 0,
     descripcion character varying(200),
-    cantidad integer DEFAULT 0,
+    cantidad numeric(10,2) DEFAULT 0,
     precio_unitario bigint DEFAULT 0,
     sub_total bigint DEFAULT 0,
-    porcentaje0 bigint DEFAULT 0,
-    porcentaje5 bigint DEFAULT 0,
-    porcentaje10 bigint DEFAULT 0,
-    impuesto bigint DEFAULT 0,
-    cantidad_hoja integer DEFAULT 0
+    impuesto0 bigint DEFAULT 0,
+    impuesto5 bigint DEFAULT 0,
+    impuesto10 bigint DEFAULT 0,
+    impuesto_porcentaje integer
 );
 
 
 ALTER TABLE factura_ventas_detalle OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 97013)
--- Name: factura_ventas_detalle_factura_detalle_seq; Type: SEQUENCE; Schema: aplicacion; Owner: postgres
+-- TOC entry 208 (class 1259 OID 97105)
+-- Name: factura_ventas_detalle_venta_detalle_seq; Type: SEQUENCE; Schema: aplicacion; Owner: postgres
 --
 
-CREATE SEQUENCE factura_ventas_detalle_factura_detalle_seq
+CREATE SEQUENCE factura_ventas_detalle_venta_detalle_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -655,19 +655,19 @@ CREATE SEQUENCE factura_ventas_detalle_factura_detalle_seq
     CACHE 1;
 
 
-ALTER TABLE factura_ventas_detalle_factura_detalle_seq OWNER TO postgres;
+ALTER TABLE factura_ventas_detalle_venta_detalle_seq OWNER TO postgres;
 
 --
--- TOC entry 2309 (class 0 OID 0)
--- Dependencies: 204
--- Name: factura_ventas_detalle_factura_detalle_seq; Type: SEQUENCE OWNED BY; Schema: aplicacion; Owner: postgres
+-- TOC entry 2312 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: factura_ventas_detalle_venta_detalle_seq; Type: SEQUENCE OWNED BY; Schema: aplicacion; Owner: postgres
 --
 
-ALTER SEQUENCE factura_ventas_detalle_factura_detalle_seq OWNED BY factura_ventas_detalle.factura_detalle;
+ALTER SEQUENCE factura_ventas_detalle_venta_detalle_seq OWNED BY factura_ventas_detalle.venta_detalle;
 
 
 --
--- TOC entry 202 (class 1259 OID 96997)
+-- TOC entry 206 (class 1259 OID 97088)
 -- Name: factura_ventas_factura_seq; Type: SEQUENCE; Schema: aplicacion; Owner: postgres
 --
 
@@ -682,8 +682,8 @@ CREATE SEQUENCE factura_ventas_factura_seq
 ALTER TABLE factura_ventas_factura_seq OWNER TO postgres;
 
 --
--- TOC entry 2310 (class 0 OID 0)
--- Dependencies: 202
+-- TOC entry 2313 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: factura_ventas_factura_seq; Type: SEQUENCE OWNED BY; Schema: aplicacion; Owner: postgres
 --
 
@@ -693,7 +693,7 @@ ALTER SEQUENCE factura_ventas_factura_seq OWNED BY factura_ventas.factura;
 SET search_path = administracion, pg_catalog;
 
 --
--- TOC entry 2067 (class 2604 OID 96904)
+-- TOC entry 2069 (class 2604 OID 96904)
 -- Name: interaccion; Type: DEFAULT; Schema: administracion; Owner: postgres
 --
 
@@ -701,7 +701,7 @@ ALTER TABLE ONLY interacciones ALTER COLUMN interaccion SET DEFAULT nextval('int
 
 
 --
--- TOC entry 2068 (class 2604 OID 96905)
+-- TOC entry 2070 (class 2604 OID 96905)
 -- Name: id; Type: DEFAULT; Schema: administracion; Owner: postgres
 --
 
@@ -709,7 +709,7 @@ ALTER TABLE ONLY interacciones_x_recursos ALTER COLUMN id SET DEFAULT nextval('r
 
 
 --
--- TOC entry 2069 (class 2604 OID 96906)
+-- TOC entry 2071 (class 2604 OID 96906)
 -- Name: recurso; Type: DEFAULT; Schema: administracion; Owner: postgres
 --
 
@@ -717,7 +717,7 @@ ALTER TABLE ONLY recursos ALTER COLUMN recurso SET DEFAULT nextval('recursos_rec
 
 
 --
--- TOC entry 2070 (class 2604 OID 96907)
+-- TOC entry 2072 (class 2604 OID 96907)
 -- Name: rol; Type: DEFAULT; Schema: administracion; Owner: postgres
 --
 
@@ -725,7 +725,7 @@ ALTER TABLE ONLY roles ALTER COLUMN rol SET DEFAULT nextval('roles_rol_seq'::reg
 
 
 --
--- TOC entry 2071 (class 2604 OID 96908)
+-- TOC entry 2073 (class 2604 OID 96908)
 -- Name: id; Type: DEFAULT; Schema: administracion; Owner: postgres
 --
 
@@ -733,7 +733,7 @@ ALTER TABLE ONLY roles_x_interacciones ALTER COLUMN id SET DEFAULT nextval('role
 
 
 --
--- TOC entry 2072 (class 2604 OID 96909)
+-- TOC entry 2074 (class 2604 OID 96909)
 -- Name: usuario; Type: DEFAULT; Schema: administracion; Owner: postgres
 --
 
@@ -741,7 +741,7 @@ ALTER TABLE ONLY usuarios ALTER COLUMN usuario SET DEFAULT nextval('usuarios_usu
 
 
 --
--- TOC entry 2073 (class 2604 OID 96910)
+-- TOC entry 2075 (class 2604 OID 96910)
 -- Name: id; Type: DEFAULT; Schema: administracion; Owner: postgres
 --
 
@@ -751,7 +751,7 @@ ALTER TABLE ONLY usuarios_x_roles ALTER COLUMN id SET DEFAULT nextval('usuarios_
 SET search_path = aplicacion, pg_catalog;
 
 --
--- TOC entry 2074 (class 2604 OID 96911)
+-- TOC entry 2076 (class 2604 OID 96911)
 -- Name: cliente; Type: DEFAULT; Schema: aplicacion; Owner: postgres
 --
 
@@ -759,7 +759,7 @@ ALTER TABLE ONLY clientes ALTER COLUMN cliente SET DEFAULT nextval('clientes_cli
 
 
 --
--- TOC entry 2075 (class 2604 OID 96964)
+-- TOC entry 2077 (class 2604 OID 96964)
 -- Name: contador; Type: DEFAULT; Schema: aplicacion; Owner: postgres
 --
 
@@ -767,7 +767,7 @@ ALTER TABLE ONLY contadores ALTER COLUMN contador SET DEFAULT nextval('contadore
 
 
 --
--- TOC entry 2095 (class 2604 OID 97045)
+-- TOC entry 2078 (class 2604 OID 97045)
 -- Name: factura; Type: DEFAULT; Schema: aplicacion; Owner: postgres
 --
 
@@ -775,7 +775,7 @@ ALTER TABLE ONLY factura_compras ALTER COLUMN factura SET DEFAULT nextval('factu
 
 
 --
--- TOC entry 2104 (class 2604 OID 97059)
+-- TOC entry 2087 (class 2604 OID 97059)
 -- Name: compra_detalle; Type: DEFAULT; Schema: aplicacion; Owner: postgres
 --
 
@@ -783,7 +783,7 @@ ALTER TABLE ONLY factura_compras_detalle ALTER COLUMN compra_detalle SET DEFAULT
 
 
 --
--- TOC entry 2076 (class 2604 OID 97002)
+-- TOC entry 2095 (class 2604 OID 97093)
 -- Name: factura; Type: DEFAULT; Schema: aplicacion; Owner: postgres
 --
 
@@ -791,15 +791,15 @@ ALTER TABLE ONLY factura_ventas ALTER COLUMN factura SET DEFAULT nextval('factur
 
 
 --
--- TOC entry 2085 (class 2604 OID 97018)
--- Name: factura_detalle; Type: DEFAULT; Schema: aplicacion; Owner: postgres
+-- TOC entry 2104 (class 2604 OID 97110)
+-- Name: venta_detalle; Type: DEFAULT; Schema: aplicacion; Owner: postgres
 --
 
-ALTER TABLE ONLY factura_ventas_detalle ALTER COLUMN factura_detalle SET DEFAULT nextval('factura_ventas_detalle_factura_detalle_seq'::regclass);
+ALTER TABLE ONLY factura_ventas_detalle ALTER COLUMN venta_detalle SET DEFAULT nextval('factura_ventas_detalle_venta_detalle_seq'::regclass);
 
 
 --
--- TOC entry 2288 (class 2613 OID 33442)
+-- TOC entry 2291 (class 2613 OID 33442)
 -- Name: 33442; Type: BLOB; Schema: -; Owner: postgres
 --
 
@@ -811,7 +811,7 @@ ALTER LARGE OBJECT 33442 OWNER TO postgres;
 SET search_path = administracion, pg_catalog;
 
 --
--- TOC entry 2261 (class 0 OID 96792)
+-- TOC entry 2264 (class 0 OID 96792)
 -- Dependencies: 183
 -- Data for Name: interacciones; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -824,20 +824,21 @@ COPY interacciones (interaccion, nombre_interaccion, modulo, orden, url) FROM st
 18	Contadores	30	0	/Aplicacion/Contador/Lista.jspx
 19	Clientes	40	0	/Session/Cliente/Lista.jspx
 20	Facturas Compras	40	0	/Session/FacturaCompra/Lista.jspx
+21	Facturas Ventas	40	0	/Session/FacturaVenta/Lista.jspx
 \.
 
 
 --
--- TOC entry 2311 (class 0 OID 0)
+-- TOC entry 2314 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: interacciones_interaccion_seq; Type: SEQUENCE SET; Schema: administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('interacciones_interaccion_seq', 20, true);
+SELECT pg_catalog.setval('interacciones_interaccion_seq', 21, true);
 
 
 --
--- TOC entry 2263 (class 0 OID 96798)
+-- TOC entry 2266 (class 0 OID 96798)
 -- Dependencies: 185
 -- Data for Name: interacciones_x_recursos; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -852,6 +853,7 @@ COPY interacciones_x_recursos (id, recurso, interaccion) FROM stdin;
 11	16	2
 12	17	2
 13	18	2
+92	80	21
 16	20	3
 17	21	3
 18	22	3
@@ -862,6 +864,23 @@ COPY interacciones_x_recursos (id, recurso, interaccion) FROM stdin;
 23	27	4
 24	28	4
 25	29	4
+93	100	21
+94	101	21
+95	102	21
+96	103	21
+97	104	21
+98	105	21
+99	106	21
+100	107	21
+101	108	21
+102	109	21
+103	110	21
+104	111	21
+105	112	21
+106	113	21
+107	114	21
+108	115	21
+109	116	21
 47	10	1
 48	50	4
 51	55	3
@@ -894,11 +913,21 @@ COPY interacciones_x_recursos (id, recurso, interaccion) FROM stdin;
 79	85	20
 80	86	20
 81	87	20
+82	88	20
+83	89	20
+84	90	20
+85	91	20
+86	92	20
+87	93	20
+88	94	20
+89	95	20
+90	96	20
+91	97	21
 \.
 
 
 --
--- TOC entry 2264 (class 0 OID 96801)
+-- TOC entry 2267 (class 0 OID 96801)
 -- Dependencies: 186
 -- Data for Name: modulos; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -912,7 +941,7 @@ COPY modulos (modulo, descripcion) FROM stdin;
 
 
 --
--- TOC entry 2265 (class 0 OID 96807)
+-- TOC entry 2268 (class 0 OID 96807)
 -- Dependencies: 187
 -- Data for Name: recursos; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -979,7 +1008,9 @@ COPY recursos (recurso, url) FROM stdin;
 70	/Cliente/Controlador/Agregar
 71	/Session/Cliente/Registro.jspx
 72	/Cliente/Linea.json
+100	/Session/FacturaVenta/Nuevo.jspx
 74	/Session/Cliente/Editar.jspx
+101	/FacturaVentaDetalle/Transaccion/Pie.json
 76	/Session/Cliente/Borrar.jspx
 77	/Cliente/Controlador/Editar
 78	/Cliente/Controlador/Borrar
@@ -992,29 +1023,54 @@ COPY recursos (recurso, url) FROM stdin;
 85	/FacturaCompraDetalle/Transaccion/Agregar
 86	/FacturaCompra/Transaccion/Fin
 87	/FacturaCompraDetalle/Transaccion/Pie.json
+88	/Session/FacturaCompra/Factura.jspx
+89	/FacturaCompra/Linea.json
+90	/FacturaCompraDetalle/Coleccion/Detalle
+91	/Session/FacturaCompra/Editar.jspx
+92	/FacturaCompraDetalle/Linea.json
+93	/FacturaCompra/Controlador/Editar
+94	/FacturaCompra/Transaccion/Inicio
+95	/FacturaCompraDetalle/Transaccion/Detalle
+96	/FacturaCompra/Controlador/Borrar
+97	/Session/FacturaVenta/Lista.jspx
+102	/FacturaVentaDetalle/Transaccion/Lista
+103	/FacturaVentaDetalle/Transaccion/Agregar
+104	/FacturaVentaDetalle/Transaccion/Linea.json
+105	/FacturaVentaDetalle/Transaccion/Editar
+106	/FacturaVentaDetalle/Transaccion/Borrar
+107	/FacturaVenta/Transaccion/Fin
+108	/Session/FacturaVenta/Factura.jspx
+109	/FacturaVenta/Linea.json
+110	/FacturaVentaDetalle/Coleccion/Detalle
+111	/FacturaVentaDetalle/Linea.json
+112	/Session/FacturaVenta/Editar.jspx
+113	/FacturaVentaDetalle/Transaccion/Detalle
+114	/FacturaVenta/Transaccion/Inicio
+115	/FacturaVenta/Controlador/Editar
+116	/FacturaVenta/Controlador/Borrar
 \.
 
 
 --
--- TOC entry 2312 (class 0 OID 0)
+-- TOC entry 2315 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: recursos_recurso_seq; Type: SEQUENCE SET; Schema: administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('recursos_recurso_seq', 87, true);
+SELECT pg_catalog.setval('recursos_recurso_seq', 116, true);
 
 
 --
--- TOC entry 2313 (class 0 OID 0)
+-- TOC entry 2316 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: recursos_x_roles_id_seq; Type: SEQUENCE SET; Schema: administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('recursos_x_roles_id_seq', 81, true);
+SELECT pg_catalog.setval('recursos_x_roles_id_seq', 109, true);
 
 
 --
--- TOC entry 2268 (class 0 OID 96817)
+-- TOC entry 2271 (class 0 OID 96817)
 -- Dependencies: 190
 -- Data for Name: roles; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -1027,7 +1083,7 @@ COPY roles (rol, nombre_rol) FROM stdin;
 
 
 --
--- TOC entry 2314 (class 0 OID 0)
+-- TOC entry 2317 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: roles_rol_seq; Type: SEQUENCE SET; Schema: administracion; Owner: postgres
 --
@@ -1036,7 +1092,7 @@ SELECT pg_catalog.setval('roles_rol_seq', 7, true);
 
 
 --
--- TOC entry 2270 (class 0 OID 96822)
+-- TOC entry 2273 (class 0 OID 96822)
 -- Dependencies: 192
 -- Data for Name: roles_x_interacciones; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -1055,20 +1111,21 @@ COPY roles_x_interacciones (id, rol, interaccion) FROM stdin;
 47	1	18
 48	7	19
 49	7	20
+50	7	21
 \.
 
 
 --
--- TOC entry 2315 (class 0 OID 0)
+-- TOC entry 2318 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: roles_x_interacciones_id_seq; Type: SEQUENCE SET; Schema: administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('roles_x_interacciones_id_seq', 49, true);
+SELECT pg_catalog.setval('roles_x_interacciones_id_seq', 50, true);
 
 
 --
--- TOC entry 2272 (class 0 OID 96827)
+-- TOC entry 2275 (class 0 OID 96827)
 -- Dependencies: 194
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -1083,7 +1140,7 @@ COPY usuarios (usuario, cuenta, clave) FROM stdin;
 
 
 --
--- TOC entry 2316 (class 0 OID 0)
+-- TOC entry 2319 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: usuarios_usuario_seq; Type: SEQUENCE SET; Schema: administracion; Owner: postgres
 --
@@ -1092,7 +1149,7 @@ SELECT pg_catalog.setval('usuarios_usuario_seq', 9, true);
 
 
 --
--- TOC entry 2274 (class 0 OID 96832)
+-- TOC entry 2277 (class 0 OID 96832)
 -- Dependencies: 196
 -- Data for Name: usuarios_x_roles; Type: TABLE DATA; Schema: administracion; Owner: postgres
 --
@@ -1107,7 +1164,7 @@ COPY usuarios_x_roles (id, usuario, rol) FROM stdin;
 
 
 --
--- TOC entry 2317 (class 0 OID 0)
+-- TOC entry 2320 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: usuarios_x_roles_id_seq; Type: SEQUENCE SET; Schema: administracion; Owner: postgres
 --
@@ -1118,7 +1175,7 @@ SELECT pg_catalog.setval('usuarios_x_roles_id_seq', 22, true);
 SET search_path = aplicacion, pg_catalog;
 
 --
--- TOC entry 2276 (class 0 OID 96837)
+-- TOC entry 2279 (class 0 OID 96837)
 -- Dependencies: 198
 -- Data for Name: clientes; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
 --
@@ -1136,7 +1193,7 @@ COPY clientes (cliente, ruc, cliente_tipo, cedula, nombre, apellido, razon_socia
 
 
 --
--- TOC entry 2318 (class 0 OID 0)
+-- TOC entry 2321 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: clientes_cliente_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
 --
@@ -1145,7 +1202,7 @@ SELECT pg_catalog.setval('clientes_cliente_seq', 15, true);
 
 
 --
--- TOC entry 2279 (class 0 OID 96961)
+-- TOC entry 2282 (class 0 OID 96961)
 -- Dependencies: 201
 -- Data for Name: contadores; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
 --
@@ -1157,7 +1214,7 @@ COPY contadores (contador, nombre, apellido, usuario, cedula) FROM stdin;
 
 
 --
--- TOC entry 2319 (class 0 OID 0)
+-- TOC entry 2322 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: contadores_contador_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
 --
@@ -1166,117 +1223,83 @@ SELECT pg_catalog.setval('contadores_contador_seq', 3, true);
 
 
 --
--- TOC entry 2285 (class 0 OID 97042)
--- Dependencies: 207
+-- TOC entry 2284 (class 0 OID 97042)
+-- Dependencies: 203
 -- Data for Name: factura_compras; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
 --
 
-COPY factura_compras (factura, numero_factura, fecha_factura, emisor_descripcion, cliente, gravada0, gravada5, gravada10, iva5, iva10, monto_total, usuario, forma_pago, total_iva, contador) FROM stdin;
-21	5	2018-03-14	gasdgasdg	9	0	25	0	1	0	25	8	CO	1	2
-22	5	2018-03-29	gasgsag	9	0	0	2510376	0	228216	2510376	8	CO	228216	2
-23	45450	2018-03-15	dgasgas	9	0	0	36	0	3	36	8	CO	3	2
-24	5	2018-03-15	gasdgsag	9	0	0	3083025	0	280275	3083025	8	CO	280275	2
-25	55454	0004-05-06	gdasgas	9	0	0	308025	0	28002	308025	8	CO	28002	2
-26	54444	2018-03-22	gasdgasgas	9	0	0	19781976	0	1798361	19781976	8	CO	1798361	2
-27	55444	2018-03-15	leo chab	9	0	0	3996	0	363	3996	8	CO	363	2
-28	4454	2018-03-23	dsafasfas	9	0	0	243980	0	22180	243980	8	CO	22180	2
-29	454	2018-03-07	gasgasga	9	0	0	443556	0	40323	443556	8	CO	40323	2
-30	666	2018-03-22	gsadgas	9	0	0	612286	0	55662	612286	8	CO	55662	2
-31	44544	2018-03-15	gasdgasdgasg	9	0	0	2909976	0	264543	2909976	8	CO	264543	2
-32	8444	2018-03-30	asdgasdgasdg	9	0	0	44162580	0	4014780	44162580	8	CO	4014780	2
-33	454	2018-03-15	tgasgasgas	9	0	0	100	0	9	100	8	CO	9	2
-34	415454	2018-03-01	gasgasg	9	0	0	28952	0	2632	28952	8	CO	2632	2
-35	4	2018-03-22	gasga	9	0	0	36	0	3	36	8	CO	3	2
-36	454	2018-03-01	gasgasga	9	0	0	220	0	20	220	8	CO	20	2
-37	454	2018-03-01	gsagasg	9	0	0	6188472	0	562588	6188472	8	CO	562588	2
+COPY factura_compras (factura, fecha_factura, emisor_descripcion, cliente, gravada0, gravada5, gravada10, iva5, iva10, monto_total, usuario, forma_pago, total_iva, contador, numero_factura) FROM stdin;
 \.
 
 
 --
--- TOC entry 2287 (class 0 OID 97056)
--- Dependencies: 209
+-- TOC entry 2286 (class 0 OID 97056)
+-- Dependencies: 205
 -- Data for Name: factura_compras_detalle; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
 --
 
 COPY factura_compras_detalle (compra_detalle, factura, descripcion, cantidad, precio_unitario, sub_total, impuesto0, impuesto5, impuesto10, impuesto_porcentaje) FROM stdin;
-14	21	5	5.00	5	25	0	25	0	5
-15	22	4444	5654.00	444	2510376	0	0	2510376	10
-16	23	66	6.00	6	36	0	0	36	10
-17	24	55	555.00	5555	3083025	0	0	3083025	10
-18	25	555	555.00	555	308025	0	0	308025	10
-19	26	444	44554.00	444	19781976	0	0	19781976	10
-20	27	666	6.00	666	3996	0	0	3996	10
-21	28	4454	5545.00	44	243980	0	0	243980	10
-22	29	666	666.00	666	443556	0	0	443556	10
-23	30	7878	787.00	778	612286	0	0	612286	10
-24	31	5444	6554.00	444	2909976	0	0	2909976	10
-25	32	6655	6636.00	6655	44162580	0	0	44162580	10
-26	33	10	10.00	10	100	0	0	100	10
-27	34	88	658.00	44	28952	0	0	28952	10
-28	35	6	6.00	6	36	0	0	36	10
-29	36	8	5.00	44	220	0	0	220	10
-30	37	888	6969.00	888	6188472	0	0	6188472	10
 \.
-
-
---
--- TOC entry 2320 (class 0 OID 0)
--- Dependencies: 208
--- Name: factura_compras_detalle_factura_detalle_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
---
-
-SELECT pg_catalog.setval('factura_compras_detalle_factura_detalle_seq', 30, true);
-
-
---
--- TOC entry 2321 (class 0 OID 0)
--- Dependencies: 206
--- Name: factura_compras_factura_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
---
-
-SELECT pg_catalog.setval('factura_compras_factura_seq', 37, true);
-
-
---
--- TOC entry 2281 (class 0 OID 96999)
--- Dependencies: 203
--- Data for Name: factura_ventas; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
---
-
-COPY factura_ventas (factura, numero_factura, fecha_factura, cliente, gravada0, gravada5, gravada10, iva5, iva10, monto_total, usuario, forma_pago, orden_trabajo, total_iva) FROM stdin;
-\.
-
-
---
--- TOC entry 2283 (class 0 OID 97015)
--- Dependencies: 205
--- Data for Name: factura_ventas_detalle; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
---
-
-COPY factura_ventas_detalle (factura_detalle, factura, descripcion, cantidad, precio_unitario, sub_total, porcentaje0, porcentaje5, porcentaje10, impuesto, cantidad_hoja) FROM stdin;
-\.
-
-
---
--- TOC entry 2322 (class 0 OID 0)
--- Dependencies: 204
--- Name: factura_ventas_detalle_factura_detalle_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
---
-
-SELECT pg_catalog.setval('factura_ventas_detalle_factura_detalle_seq', 1, false);
 
 
 --
 -- TOC entry 2323 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: factura_compras_detalle_factura_detalle_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
+--
+
+SELECT pg_catalog.setval('factura_compras_detalle_factura_detalle_seq', 56, true);
+
+
+--
+-- TOC entry 2324 (class 0 OID 0)
 -- Dependencies: 202
+-- Name: factura_compras_factura_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
+--
+
+SELECT pg_catalog.setval('factura_compras_factura_seq', 46, true);
+
+
+--
+-- TOC entry 2288 (class 0 OID 97090)
+-- Dependencies: 207
+-- Data for Name: factura_ventas; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
+--
+
+COPY factura_ventas (factura, numero_factura, fecha_factura, cliente, emisor_descripcion, gravada0, gravada5, gravada10, iva5, iva10, monto_total, usuario, forma_pago, total_iva, contador) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2290 (class 0 OID 97107)
+-- Dependencies: 209
+-- Data for Name: factura_ventas_detalle; Type: TABLE DATA; Schema: aplicacion; Owner: postgres
+--
+
+COPY factura_ventas_detalle (venta_detalle, factura, descripcion, cantidad, precio_unitario, sub_total, impuesto0, impuesto5, impuesto10, impuesto_porcentaje) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2325 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: factura_ventas_detalle_venta_detalle_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
+--
+
+SELECT pg_catalog.setval('factura_ventas_detalle_venta_detalle_seq', 5, true);
+
+
+--
+-- TOC entry 2326 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: factura_ventas_factura_seq; Type: SEQUENCE SET; Schema: aplicacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('factura_ventas_factura_seq', 1, false);
+SELECT pg_catalog.setval('factura_ventas_factura_seq', 2, true);
 
 
 --
--- TOC entry 2289 (class 0 OID 0)
+-- TOC entry 2292 (class 0 OID 0)
 -- Data for Name: BLOBS; Type: BLOBS; Schema: -; Owner: 
 --
 
@@ -1413,7 +1436,7 @@ ALTER TABLE ONLY contadores
 
 
 --
--- TOC entry 2145 (class 2606 OID 97075)
+-- TOC entry 2141 (class 2606 OID 97075)
 -- Name: factura_compras_detalle_pkey; Type: CONSTRAINT; Schema: aplicacion; Owner: postgres
 --
 
@@ -1422,7 +1445,7 @@ ALTER TABLE ONLY factura_compras_detalle
 
 
 --
--- TOC entry 2143 (class 2606 OID 97069)
+-- TOC entry 2139 (class 2606 OID 97069)
 -- Name: factura_compras_pkey; Type: CONSTRAINT; Schema: aplicacion; Owner: postgres
 --
 
@@ -1431,16 +1454,16 @@ ALTER TABLE ONLY factura_compras
 
 
 --
--- TOC entry 2141 (class 2606 OID 97029)
+-- TOC entry 2145 (class 2606 OID 97121)
 -- Name: factura_ventas_detalle_pkey; Type: CONSTRAINT; Schema: aplicacion; Owner: postgres
 --
 
 ALTER TABLE ONLY factura_ventas_detalle
-    ADD CONSTRAINT factura_ventas_detalle_pkey PRIMARY KEY (factura_detalle);
+    ADD CONSTRAINT factura_ventas_detalle_pkey PRIMARY KEY (venta_detalle);
 
 
 --
--- TOC entry 2139 (class 2606 OID 97012)
+-- TOC entry 2143 (class 2606 OID 97119)
 -- Name: factura_ventas_pkey; Type: CONSTRAINT; Schema: aplicacion; Owner: postgres
 --
 
@@ -1449,16 +1472,43 @@ ALTER TABLE ONLY factura_ventas
 
 
 --
--- TOC entry 2146 (class 2606 OID 97035)
+-- TOC entry 2146 (class 2606 OID 97079)
+-- Name: factura_compras_cliente_fkey; Type: FK CONSTRAINT; Schema: aplicacion; Owner: postgres
+--
+
+ALTER TABLE ONLY factura_compras
+    ADD CONSTRAINT factura_compras_cliente_fkey FOREIGN KEY (cliente) REFERENCES clientes(cliente) ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2147 (class 2606 OID 97132)
+-- Name: factura_compras_detalle_factura_fkey; Type: FK CONSTRAINT; Schema: aplicacion; Owner: postgres
+--
+
+ALTER TABLE ONLY factura_compras_detalle
+    ADD CONSTRAINT factura_compras_detalle_factura_fkey FOREIGN KEY (factura) REFERENCES factura_compras(factura) ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2148 (class 2606 OID 97127)
+-- Name: factura_ventas_cliente_fkey; Type: FK CONSTRAINT; Schema: aplicacion; Owner: postgres
+--
+
+ALTER TABLE ONLY factura_ventas
+    ADD CONSTRAINT factura_ventas_cliente_fkey FOREIGN KEY (cliente) REFERENCES clientes(cliente) ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2149 (class 2606 OID 97122)
 -- Name: factura_ventas_detalle_factura_fkey; Type: FK CONSTRAINT; Schema: aplicacion; Owner: postgres
 --
 
 ALTER TABLE ONLY factura_ventas_detalle
-    ADD CONSTRAINT factura_ventas_detalle_factura_fkey FOREIGN KEY (factura) REFERENCES factura_ventas(factura) ON DELETE CASCADE;
+    ADD CONSTRAINT factura_ventas_detalle_factura_fkey FOREIGN KEY (factura) REFERENCES factura_ventas(factura) ON DELETE RESTRICT;
 
 
 --
--- TOC entry 2296 (class 0 OID 0)
+-- TOC entry 2299 (class 0 OID 0)
 -- Dependencies: 9
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -1469,7 +1519,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2018-03-13 13:50:49
+-- Completed on 2018-03-22 12:25:37
 
 --
 -- PostgreSQL database dump complete

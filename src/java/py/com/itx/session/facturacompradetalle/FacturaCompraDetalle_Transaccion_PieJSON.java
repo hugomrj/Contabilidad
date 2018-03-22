@@ -73,17 +73,6 @@ public class FacturaCompraDetalle_Transaccion_PieJSON extends HttpServlet {
                 cadenaJson =     cadenaJson +"\"montototal\":"+ numeroSubTotal.toString();
                 
                 
-                
-                cadenaJson =  cadenaJson + ",";          
-                if (numeroSubTotal == 0) {
-                    cadenaJson =     cadenaJson +"\"montoletras\":"+ "\"\"";
-                }
-                else
-                {
-                    cadenaJson =     cadenaJson +"\"montoletras\":"+ "\""+n.numeroaLetras(numeroSubTotal)+"\"";                    
-                }
-                
-                
                 cadenaJson =  cadenaJson + ",";                
                 cadenaJson =     cadenaJson +"\"gravada0\":"+ transaccion.getGravada0();                
                 
@@ -100,10 +89,22 @@ public class FacturaCompraDetalle_Transaccion_PieJSON extends HttpServlet {
                 cadenaJson =     cadenaJson +"\"iva10\":"+ transaccion.getIva10();                                                                
                 
                 cadenaJson =  cadenaJson + ",";                
-                cadenaJson =     cadenaJson +"\"ivatotal\":"+ transaccion.getIvaTotal();                                                                
+                cadenaJson =     cadenaJson +"\"total_iva\":"+ transaccion.getIvaTotal();                                                                
                 
                 cadenaJson =  cadenaJson + "}";
-                cadenaJson =  cadenaJson + "]";
+                
+                
+                
+                cadenaJson =  cadenaJson + ",{";          
+                if (numeroSubTotal == 0) {
+                    cadenaJson =     cadenaJson +"\"montoletras\":"+ "\"\"";
+                }
+                else
+                {
+                    cadenaJson =     cadenaJson +"\"montoletras\":"+ "\""+n.numeroaLetras(numeroSubTotal)+"\"";                    
+                }
+                
+                cadenaJson =  cadenaJson + "}]";
                 
 
                 out.println(cadenaJson);  

@@ -8,13 +8,27 @@ function FacturaCompraDetalle_tabla( dom )
         =  AjaxUrl( getRutaAbsoluta()+'/FacturaCompraDetalle/Transaccion/Lista');    
 
     var path = getRutaAbsoluta()+"/FacturaCompraDetalle/Transaccion/Pie.json"
+    FacturaCompraDetalle_pie_json( path );
+    
+    FacturaCompraDetalle_tabla_registro("compradetalle_transaccion_tabla");
+
+};
+
+
+
+
+
+
+function FacturaCompraDetalle_pie_json( path )
+{
+
     var jsonResponse = AjaxUrl( path );    
     
     if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )           
     {  
         var json = JSON.parse(jsonResponse); 
         document.getElementById('fcdlt_monto_total').innerHTML = VJson( json, "montototal", "N");        
-        document.getElementById('fcdlt_monto_letras').innerHTML = VJson( json, "montoletras");
+        
         
         document.getElementById('fcdlt_gravada0').innerHTML = VJson( json, "gravada0", "N");        
         document.getElementById('fcdlt_gravada5').innerHTML = VJson( json, "gravada5", "N");        
@@ -22,23 +36,40 @@ function FacturaCompraDetalle_tabla( dom )
         
         document.getElementById('fcdlt_iva5').innerHTML = VJson( json, "iva5", "N");        
         document.getElementById('fcdlt_iva10').innerHTML = VJson( json, "iva10", "N");        
-        document.getElementById('fcdlt_total_iva').innerHTML = VJson( json, "ivatotal", "N");                
+        document.getElementById('fcdlt_total_iva').innerHTML = VJson( json, "total_iva", "N");                
        
+       document.getElementById('fcdlt_monto_letras').innerHTML = getJson(1, json, "montoletras");
 
     }
 
+}
 
-    FacturaCompraDetalle_tabla_registro();
 
+
+
+
+
+function FacturaCompraDetalle_tabla_registro( tabla )
+{
+    var table = document.getElementById( tabla ).getElementsByTagName('tbody')[0];
+    var rows = table.getElementsByTagName('tr');
+
+    for (var i=0 ; i < rows.length; i++)
+    {
+        rows[i].onclick = function()
+        {
+                var linea_id = this.dataset.orden;                     
+                var id_transaccion = this.dataset.id_transaccion;     
+                
+                CompraDetalle_modal_EditarBorrar( id_transaccion );
+        };       
+    }
 };
 
 
 
-function FacturaCompraDetalle_tabla_registro(  )
+function FacturaCompraDetalle_tabla_registro_consulta( tabla )
 {
-
-    var tabla = "compradetalle_transaccion_tabla";
-
     var table = document.getElementById( tabla ).getElementsByTagName('tbody')[0];
     var rows = table.getElementsByTagName('tr');
 
@@ -47,7 +78,10 @@ function FacturaCompraDetalle_tabla_registro(  )
         rows[i].onclick = function()
         {
                 var linea_id = this.dataset.orden;     
-                CompraDetalle_modal_EditarBorrar(linea_id);
+                CompraDetalle_modal_Consulta(linea_id);
+                FacturaCompraDetalle_form_disabled();
+                FacturaCompraDetalle_form_formato();
+                
         };       
     }
 };
@@ -57,7 +91,9 @@ function FacturaCompraDetalle_tabla_registro(  )
 
 
 
-function  FacturaVentaDetalle_form_formato (  ){
+
+
+function  FacturaCompraDetalle_table_formato (  ){
         
         var tabla = "compradetalle_transaccion_tabla";
 
@@ -105,8 +141,6 @@ function  FacturaVentaDetalle_form_formato (  ){
         
         
 }
-
-
 
 
 

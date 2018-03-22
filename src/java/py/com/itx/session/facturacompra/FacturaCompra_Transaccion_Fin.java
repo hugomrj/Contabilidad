@@ -68,6 +68,7 @@ public class FacturaCompra_Transaccion_Fin extends HttpServlet {
                 );            
             
             
+            
             // cabecera            
             FacturaCompra  factura_compra = new FacturaCompra();
             Persistencia persistencia = new Persistencia();            
@@ -75,6 +76,8 @@ public class FacturaCompra_Transaccion_Fin extends HttpServlet {
             
             factura_compra.setUsuario(usuario.getUsuario());            
             factura_compra.setContador(contador);
+            
+            
             
             
             // datos de pie
@@ -91,8 +94,8 @@ public class FacturaCompra_Transaccion_Fin extends HttpServlet {
 
             // cargar detalles        
             for (FacturaCompraDetalle fc_det : transaccion.getListaObjeto()) {      
-                                
-                fc_det.setFactura(factura_compra.getFactura());
+                
+                fc_det.setFactura(factura_compra);                
                 fc_det.setCompra_detalle(0);
                 persistencia.insert(fc_det);
                 

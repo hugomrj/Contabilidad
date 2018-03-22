@@ -12,10 +12,29 @@
                     method="post" 
                     id="clic_form" 
                     name='clic_form'
-                     style="margin-bottom: 1rem;"
-                    
+                     style="margin-bottom: 1rem;"                    
                 >
 
+                
+                <input TYPE="hidden" 
+                           id ="clic_factura"
+                           name="factura" 
+                           value="0"
+                           />                   
+                
+                <input TYPE="hidden" 
+                           id ="clic_usuario"
+                           name="usuario" 
+                           value="0"
+                           />                                   
+                
+                <input TYPE="hidden" 
+                           id ="clic_contador"
+                           name="contador" 
+                           value="0"
+                           />                                                   
+                
+                
                     <div class="tabular">  
 
                         <div class="fila">
@@ -51,10 +70,8 @@
                                     <input 
                                             TYPE="TEXT"
                                             name="numero_factura"                                                
-                                            id="numero_factura"
-                                            value="0"
+                                            id="numero_factura"                                            
                                             class="t10n"
-
                                             />
                                 </div>
                             </div>

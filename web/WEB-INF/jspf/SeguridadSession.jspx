@@ -53,10 +53,7 @@
                     property="recursosSession" value="${pageContext.request}"/>           
         
         
-            <jsp:getProperty 
-                    name="usuarioBean" 
-                    property="recorrer" />    
-    
+   
 
     
     

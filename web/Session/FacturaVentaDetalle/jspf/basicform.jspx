@@ -1,0 +1,127 @@
+
+
+
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+            
+    
+            <div class="tabular">  
+
+                
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="cantidad">Cantidad:</label>                             
+                            <input 
+                                    TYPE="TEXT"
+                                    name="cantidad"                                                
+                                    id="fvd_cantidad"                                    
+                                    class="t10n"
+                                    
+                                    />
+                        </div>
+                    </div>  
+                </div>                   
+                
+                
+                
+                
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="descripcion">Descripcion:</label>                             
+                            <input 
+                                    TYPE="TEXT"
+                                    name="descripcion"                                                
+                                    id="fvd_descripcion"                                    
+                                    class="t30"
+                                    
+                                    />
+                        </div>
+                    </div>  
+                </div>  
+
+                
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="precio_unitario">Precio unitario:</label>                             
+                            <input 
+                                    TYPE="TEXT"
+                                    name="precio_unitario"                                                
+                                    id="fvd_precio_unitario"                                    
+                                    class="t10n"
+                                    
+                                    />
+                        </div>
+                    </div>  
+                </div>                  
+                
+                
+                
+                <input 
+                    TYPE="hidden"
+                    name="impuesto_porcentaje"                                                
+                    id="fvd_impuesto_porcentaje"
+                    value=""
+                        />                
+                
+                
+                
+                
+                <input 
+                    TYPE="hidden"
+                    name="compra_detalle"                                                
+                    id="fvd_compra_detalle"
+                    value="0"
+                        />                
+                
+                               
+                
+
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            
+                                <label for="impuesto" >Impuesto %:</label> 
+                                    <SELECT NAME="impuesto_selector"
+                                            id="fvd_impuesto_selector"
+                                            style="width: 6rem;">
+                                      <OPTION>10</OPTION>
+                                      <OPTION>5</OPTION>
+                                      <OPTION>exenta</OPTION>
+                                    </SELECT>
+
+                        </div>
+                    </div>  
+                </div>                  
+                
+                
+                <div class="fila">
+                    <div class="col">  
+                        <div class="campo">
+                            <label 
+                                    for="sub_total">Sub total:</label>                             
+                            <input 
+                                    TYPE="TEXT"
+                                    name="sub_total"                                                
+                                    id="fvd_sub_total"                                    
+                                    class="t10n"
+                                    disabled="disabled"
+                                    />
+                        </div>
+                    </div>  
+                </div>                       
+                
+                
+                
+            </div>
+    
+</jsp:root>
+                
+
+

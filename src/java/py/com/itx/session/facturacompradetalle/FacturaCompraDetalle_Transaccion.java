@@ -121,6 +121,22 @@ public class FacturaCompraDetalle_Transaccion {
    
     
 
+    public FacturaCompraDetalle  getCompraDetalleTransaccion ( Integer id) {       
+        
+        for(int i = 0; i < this.listaObjeto.size(); i++) {            
+            if (i ==  id){
+                return this.listaObjeto.get(i);                
+            }
+        }      
+    
+        return null ;
+    }       
+   
+        
+
+    
+    
+    
     public void Indexar( ) {       
         
         for(int i = 0; i < this.listaObjeto.size(); i++) {            

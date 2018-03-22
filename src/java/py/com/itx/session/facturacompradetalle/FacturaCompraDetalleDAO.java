@@ -9,12 +9,14 @@ package py.com.itx.session.facturacompradetalle;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import nebuleuse.ORM.Conexion;
 import nebuleuse.ORM.xml.Global;
 import nebuleuse.util.Lista;
+import py.com.itx.aplicacion.contador.Contador;
 import py.com.itx.session.facturacompra.FacturaCompraSQL;
 
 
@@ -40,40 +42,59 @@ public class FacturaCompraDetalleDAO  {
 
         
     
-    public List<Map<String, Object>>  Lista ( Integer factura, Integer page )
+    public List<Map<String, Object>>  FacturaDetalle ( Integer factura, Contador contador )
             throws Exception {
 
+            statement = conexion.getConexion().createStatement();              
             
-            page = (page==0) ? 1 : page;
-        
-            page = (lineas * page) - lineas ;        
-            String limite_offset = "  limit " + lineas + " "+ 
-                    " offset " + page  ;
-            
-            statement = conexion.getConexion().createStatement();  
-            
-            //String sql = FacturaCompraDetalleSQL..
-            
-            String sql = new FacturaCompraDetalleSQL().Lista(factura);
-               
-            String sqlCount = " select count(*) as rows from ( "
-                    + sql 
-                    + " ) as C ";
-               
-            resultset = statement.executeQuery(sqlCount);                 
-            if (resultset.next()){
-                this.totalRegistros =  Integer.parseInt(resultset.getString(1));
+            String sql = ""    ;        
+            if (contador == null){
+                sql = new FacturaCompraDetalleSQL().FacturaDetalle(factura, 0);
             }
-                
-                
-            sql = sql + limite_offset ;
+            else{
+                sql = new FacturaCompraDetalleSQL().FacturaDetalle(factura, 
+                        contador.getContador());
+            }            
+            
             resultset = statement.executeQuery(sql);     
 
             return lista.resultsetToList(resultset ) ;
              
     }                  
         
+    
+    
+    
+    public Boolean BorrarFacturaDetalle ( Integer factura ) 
+            throws SQLException{
 
-
+        Boolean bool = false;   
+            
+        try
+        {
+            statement = conexion.getConexion().createStatement();      
+            
+            String sql = "  delete FROM aplicacion.factura_compras_detalle \n" +
+                            "  where factura =  "  + factura    ;        
+            
+            statement.execute(sql);    
+            bool = true;
+        }
+        catch (SQLException SqlEx)
+        {            
+            // ("Se genera el error de origen");            
+            bool = false;            
+            System.out.println(SqlEx);
+//            throw new SQLException(SqlEx);
+        }                    
+            
+        return bool;
+             
+    }                  
+        
+        
+    
+    
+    
     
 }

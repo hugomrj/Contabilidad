@@ -15,7 +15,7 @@ window.onload = function() {
     Cabecera_cliente(cliente);
     localStorage.removeItem("storageCliente");
     
-    FacturaVenta_tabla_lista( );
+    FacturaCompra_tabla_lista( );
     
     
     
@@ -25,7 +25,7 @@ window.onload = function() {
             function(event) {
                 if(event.keyCode == 13)
                 {
-                    FacturaVenta_tabla_lista ( );
+                    FacturaCompra_tabla_lista ( );
                 }
             },
             false
@@ -44,9 +44,13 @@ window.onload = function() {
                     +document.getElementById('clic_cliente').value );                            
             
             if (control.toString().trim() == 'true'){
-                location.href= getRutaAbsoluta()+"/FacturaCompra/Transaccion/Inicio?cliente="
-                    +document.getElementById('clic_cliente').value;      
                 
+               
+                AjaxUrl( getRutaAbsoluta()+"/FacturaCompra/Transaccion/Inicio");
+               
+                location.href= getRutaAbsoluta()+"/Session/FacturaCompra/Nuevo.jspx?cliente="                                   
+                    +document.getElementById('clic_cliente').value;                            
+               
             }else
             {
                 alerta_error("Falta seleccionar Cliente");                            
@@ -74,7 +78,7 @@ window.onresize = function() {
 
 
 
-function FacturaVenta_tabla_lista(){
+function FacturaCompra_tabla_lista(){
 
             AjaxPeticion(getRutaAbsoluta()+'/FacturaCompra/Coleccion/Lista?buscar='
                 +document.getElementById('buscar').value  
@@ -85,17 +89,17 @@ function FacturaVenta_tabla_lista(){
                 
                 
             // paginacion                                
-            var totalregistros = document.getElementById("facven_tabla").dataset.totalregistros;  
+            var totalregistros = document.getElementById("faccom_tabla").dataset.totalregistros;  
             AjaxPeticion( getRutaAbsoluta()+'/Paginacion?page='+page+"&totalregistros="+totalregistros
                 +""
                 ,'div_paginacion');                     
                 
-            paginacionajax ( "FacturaVenta_tabla_lista();"  );                       
+            paginacionajax ( "FacturaCompra_tabla_lista();"  );                       
            
            
            
-            FacturaVenta_tabla_lista_registro("facven_tabla");           
-            FacturaVenta_tabla_lista_formato("facven_tabla");
+            FacturaCompra_tabla_lista_registro("faccom_tabla");           
+            FacturaCompra_tabla_lista_formato("faccom_tabla");
         
 }
 
@@ -121,7 +125,7 @@ function Cabecera_cliente ( cliente ){
             clic_cliente.value  = fmtNum(clic_cliente.value);           
             var idvalor = clic_cliente.value;                
             document.getElementById( 'cliente_descripcion').innerHTML = cliente_descripcion_Json( idvalor );         
-            FacturaVenta_tabla_lista ( );
+            FacturaCompra_tabla_lista ( );
         };     
         clic_cliente.onblur();
         
@@ -150,7 +154,7 @@ function Cabecera_cliente ( cliente ){
 
 
 
-function  FacturaVenta_tabla_lista_formato ( tabla ){
+function  FacturaCompra_tabla_lista_formato ( tabla ){
     
 
         var table = document.getElementById( tabla ).getElementsByTagName('tbody')[0];
@@ -166,7 +170,7 @@ function  FacturaVenta_tabla_lista_formato ( tabla ){
 
 
 
-function FacturaVenta_tabla_lista_registro( tabla )
+function FacturaCompra_tabla_lista_registro( tabla )
 {
 
 
@@ -178,6 +182,8 @@ function FacturaVenta_tabla_lista_registro( tabla )
         rows[i].onclick = function()
         {
                 var linea_id = this.dataset.linea_id;                     
+                window.location = getRutaAbsoluta()+"/Session/FacturaCompra/Factura.jspx?id="+linea_id;                
+                
                 // falta editar factura
         };       
     }

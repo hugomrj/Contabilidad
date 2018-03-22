@@ -7,7 +7,19 @@ window.onload = function() {
     
     CabeceraFC(cliente);
     FacturaCompraDetalle_tabla("tabla_compra_detalle");
-    FacturaVentaDetalle_form_formato ();   
+    FacturaCompraDetalle_table_formato ();   
+    
+
+    var numero_factura = document.getElementById('numero_factura');   
+    numero_factura.onfocus  = function() {        
+        numero_factura.focus();
+        numero_factura.select();
+    };      
+    numero_factura.focus();
+    numero_factura.select();
+
+    
+    
     
     
     var cd_agregar_trasanccion = document.getElementById('cd_agregar_trasanccion');
@@ -18,8 +30,6 @@ window.onload = function() {
         false
     );    
 
-    
-    
     
     var cd_guardar_trasanccion = document.getElementById('cd_guardar_trasanccion');
     cd_guardar_trasanccion.addEventListener('click',
@@ -46,8 +56,7 @@ window.onload = function() {
 
                     if (!(isNaN(control))){
 
-                        localStorage.setItem("storageCliente", document.getElementById('clic_cliente').value);                             
-                        
+                        localStorage.setItem("storageCliente", document.getElementById('clic_cliente').value);   
                         window.location = getRutaAbsoluta()+"/Session/FacturaCompra/Lista.jspx"; 
                     }
                     else{                    
@@ -68,8 +77,6 @@ window.onload = function() {
                
                localStorage.setItem("storageCliente", document.getElementById('clic_cliente').value);                                                     
                window.location = getRutaAbsoluta()+"/Session/FacturaCompra/Lista.jspx";                
-               
-            
             },
             false
             
@@ -100,7 +107,7 @@ function fcompra_nuevo_validar_form ( ){
     
     //numero_factura
     var numero_factura = document.getElementById('numero_factura');    
-    if (numero_factura .value <= 0 )     
+    if (numero_factura .value == '')     
     {
         alerta_error("Falta numero factura");
         numero_factura.focus();
@@ -144,52 +151,6 @@ function fcompra_nuevo_validar_form ( ){
 
 }
 
-
-
-
-
-
-
-function CabeceraFC (cliente ){
-
-        AjaxPeticion( getRutaAbsoluta()+'/Session/FacturaCompra/jspf/cabeceraFC.jspx'
-                ,'form_cabecera');           
-
-        var path = getRutaAbsoluta()+"/Cliente/Linea.json?id="+cliente 
-        var jsonResponse = AjaxUrl( path );    
-
-    
-    if ( (jsonResponse.toString().trim() != "[]") && (jsonResponse.toString().trim() != "error403") )           
-    {        
-        var json = JSON.parse(jsonResponse);  
-        
-        document.getElementById('clic_cliente').value = VJson( json, "cliente", "N");
-        
-        var tipocli = VJson( json, "tipo").toString().trim();
-        if (tipocli === "F"){            
-            document.getElementById('cliente_descripcion').value =    
-                    VJson( json, "nombre") + " " + VJson( json, "apellido");                        
-        }
-        if (tipocli === "J"){
-            document.getElementById('cliente_descripcion').value =    
-                    VJson( json, "razon_social") ;            
-        }        
-    }
-    else
-    {       
-        document.getElementById('clic_cliente').value = 0;
-        document.getElementById('cliente_descripcion').value = "";
-    }
-    
-    var numero_factura = document.getElementById('numero_factura');   
-    numero_factura.onblur  = function() {        
-        numero_factura.value  = fmtNum(numero_factura.value);   
-    };     
-    numero_factura.onblur();        
-    
-    
-
-}
 
 
 

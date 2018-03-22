@@ -32,7 +32,7 @@
                                         
                     
                     
-                    <c:forEach items="${transaccionCompra_Detalles}" var ="lista" >
+                    <c:forEach items="${lista}" var ="lista" >
 
                         <tr 
                             data-id_transaccion ="${idRegistro}"
