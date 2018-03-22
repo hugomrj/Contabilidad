@@ -3,11 +3,11 @@
 
 <properties>
             
-    <entry key="server">localhost</entry>
+    <entry key="server"></entry>
     
-    <entry key="database">contabilidad_database</entry>    
+    <entry key="database"></entry>    
     
-    <entry key="user">hugo</entry>
+    <entry key="user"></entry>
     
     <entry key="password">12345</entry>  
     

@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/componente/Session/FacturaVentaDetalle/basictable.js</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/componente/Session/FacturaVenta/Factura.js</file>
-            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/Session/FacturaVenta/Factura.jspx</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/componente/Session/FacturaVentaDetalle/basicform.js</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/js/componente/Session/FacturaVenta/Nuevo.js</file>
+            <file>file:/C:/Users/hugo/Documents/NetBeansProjects/Contabilidad/web/Session/FacturaVenta/Nuevo.jspx</file>
         </group>
     </open-files>
 </project-private>
